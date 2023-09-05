@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2E02A57-8B94-4205-B2CF-E472BD96C121}</ProjectGuid>
+    <ProjectGuid>{31192A8F-47E6-45F5-AFA7-C175A73CB5A0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Catalogo</RootNamespace>
-    <AssemblyName>Catalogo</AssemblyName>
+    <RootNamespace>Catalogo.UI</RootNamespace>
+    <AssemblyName>Catalogo.UI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
