@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Catalogo.Dominio
 {
-    internal class Articulo
+    public class Articulo
     {
-        public int Codigo { get; set; }
+        internal int Codigo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public Marca Marca { get; set; }

@@ -45,5 +45,11 @@
     <Compile Include="IABML.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Catalogo.Dominio\Catalogo.Dominio.csproj">
+      <Project>{53794531-32b9-412a-b253-3bf5e9051d71}</Project>
+      <Name>Catalogo.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
