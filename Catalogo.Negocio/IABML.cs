@@ -15,7 +15,7 @@ namespace Catalogo.Negocio
         List<T> Listar();
     }
 
-    class ArticuloNegocio : IABML<Articulo>
+    public class ArticuloNegocio : IABML<Articulo>
     {
         public void Create(Articulo newEntity) { }
 
@@ -36,9 +36,9 @@ namespace Catalogo.Negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.Descripcion = (string)datos.Lector["Descirpcion"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Precio = (double)datos.Lector["Precio"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
                     aux.Codigo = (int)datos.Lector["Codigo"];
                     aux.UrlImagen = (string)datos.Lector["UrlImagen"];
                     aux.Marca = (Marca)datos.Lector["Marca"];

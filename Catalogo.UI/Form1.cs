@@ -7,14 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Catalogo.Negocio;
 
 namespace Catalogo.UI
 {
-    public partial class Form1 : Form
+    public partial class frmArticulos : Form
     {
-        public Form1()
+        public frmArticulos()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = articuloNegocio.Listar();
         }
     }
 }
