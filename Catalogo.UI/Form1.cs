@@ -23,10 +23,9 @@ namespace Catalogo.UI
         private void Form1_Load_1(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            //dgvArticulos.DataSource = articuloNegocio.Listar();
-            //dgvArticulos.Columns["UrlImagen"].Visible = true;
             listaArticulo = articuloNegocio.Listar();
             dgvArticulos.DataSource = listaArticulo;
+            dgvArticulos.Columns["imagenUrl"].Visible = false;
             pbxArticulo.Load(listaArticulo[0].ImagenURL);
         }
 
