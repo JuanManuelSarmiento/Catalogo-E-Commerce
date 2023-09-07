@@ -18,14 +18,6 @@ namespace Catalogo.UI
             InitializeComponent();
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            dgvArticulos.DataSource = articuloNegocio.Listar();
-            dgvArticulos.Columns["UrlImagen"].Visible = false;
-        }
-
         private void Form1_Load_1(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
