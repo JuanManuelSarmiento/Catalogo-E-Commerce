@@ -1,7 +1,7 @@
 ﻿
 namespace Catalogo.UI
 {
-    partial class Form1
+    partial class frmArticulos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,35 @@ namespace Catalogo.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvArticulos
+            // 
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.Location = new System.Drawing.Point(55, 34);
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.Size = new System.Drawing.Size(664, 301);
+            this.dgvArticulos.TabIndex = 0;
+            // 
+            // frmArticulos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1067, 450);
+            this.Controls.Add(this.dgvArticulos);
+            this.Name = "frmArticulos";
+            this.Text = "ABML Articulos";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvArticulos;
     }
 }
 
