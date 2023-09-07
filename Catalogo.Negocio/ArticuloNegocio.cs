@@ -22,7 +22,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.codigo, A.nombre, A.descripcion, A.imagenURL, A.precio, C.descripcion categoria, M.descripcion marca FROM ARTICULOS A, Categorias C, Marcas M\r\nWHERE A.IdMarca = M.Id AND C.Id = A.IdCategoria;");
+                datos.SetConsulta("SELECT A.codigo, A.nombre, A.descripcion, A.ImagenURL, A.precio, C.descripcion categoria, M.descripcion marca FROM ARTICULOS A, Categorias C, Marcas M\r\nWHERE A.IdMarca = M.Id AND C.Id = A.IdCategoria;");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -36,7 +36,7 @@ namespace Catalogo.Negocio
                     aux.Marca.Descripcion = (string)datos.Lector["marca"];
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)datos.Lector["categoria"];
-                    aux.UrlImagen = (string)datos.Lector["imagenURL"];
+                    aux.ImagenURL = (string)datos.Lector["ImagenURL"];
                     aux.Precio = (decimal)datos.Lector["precio"];
 
                     articulos.Add(aux);
