@@ -9,7 +9,28 @@ namespace Catalogo.Negocio
 {
     public class ArticuloNegocio : IABML<Articulo>
     {
-        public void Create(Articulo newEntity) { }
+        public void Add(Articulo newEntity) {
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("INSERT INTO ARTICULOS (Codigo,Nombre ,Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) VALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@urlImagen,@precio);");
+                datos.SetParametro("@codigo", newEntity.Codigo);
+                datos.SetParametro("@nombre", newEntity.Nombre);
+                datos.SetParametro("@descripcion", newEntity.Descripcion);
+                datos.SetParametro("@idMarca", newEntity.Marca.Id);
+                datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
+                datos.SetParametro("@urlImagen", newEntity.ImagenURL);
+                datos.SetParametro("@precio", newEntity.Precio);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
 
         public void Delete(Articulo Entity) { }
 
@@ -28,13 +49,13 @@ namespace Catalogo.Negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    aux.Marca = new Marca();
+                    aux.Categoria = new Categoria();
 
                     aux.Codigo = (string)datos.Lector["codigo"];
                     aux.Nombre = (string)datos.Lector["nombre"];
                     aux.Descripcion = (string)datos.Lector["descripcion"];
-                    aux.Marca = new Marca();
                     aux.Marca.Descripcion = (string)datos.Lector["marca"];
-                    aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)datos.Lector["categoria"];
                     aux.ImagenURL = (string)datos.Lector["ImagenURL"];
                     aux.Precio = (decimal)datos.Lector["precio"];
