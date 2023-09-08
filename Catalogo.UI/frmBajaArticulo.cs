@@ -30,6 +30,7 @@ namespace Catalogo.UI
             artNegocio.Delete(aux);
 
             MessageBox.Show("Eliminado exitosamente");
+            Close();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {

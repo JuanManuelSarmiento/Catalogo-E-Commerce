@@ -55,6 +55,7 @@ namespace Catalogo.UI
 
             artNegocio.Add(aux);
             MessageBox.Show("Agregado exitosamente");
+            Close();
         }
     }
 }

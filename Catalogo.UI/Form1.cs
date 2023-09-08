@@ -19,7 +19,6 @@ namespace Catalogo.UI
         {
             InitializeComponent();
         }
-
         private void Form1_Load_1(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
