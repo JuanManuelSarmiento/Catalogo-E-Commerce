@@ -24,14 +24,14 @@ namespace Catalogo.UI
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             listaArticulo = articuloNegocio.Listar();
             dgvArticulos.DataSource = listaArticulo;
-            dgvArticulos.Columns["imagenUrl"].Visible = false;
-            CargarImagen(listaArticulo[0].ImagenURL);
+            dgvArticulos.Columns["Imagen"].Visible = false;
+            CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            CargarImagen(seleccionado.ImagenURL);
+            CargarImagen(seleccionado.Imagen.ImagenUrl);
         }
         private void CargarImagen(string Imagen)
         {

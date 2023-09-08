@@ -49,9 +49,9 @@ namespace Catalogo.UI
                 Descripcion = txtDescripcion.Text,
                 Marca = (Marca)cboMarca.SelectedItem,
                 Categoria = (Categoria)cboCategoria.SelectedItem,
-                ImagenURL = txtImagen.Text,
                 Precio = auxPrecio
             };
+            aux.Imagen.ImagenUrl = txtImagen.Text;
 
             artNegocio.Add(aux);
             MessageBox.Show("Agregado exitosamente");
