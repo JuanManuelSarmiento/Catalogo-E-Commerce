@@ -62,7 +62,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.codigo, A.nombre, A.descripcion, A.ImagenURL, A.precio, C.descripcion categoria, M.descripcion marca FROM ARTICULOS A, Categorias C, Marcas M\r\nWHERE A.IdMarca = M.Id AND C.Id = A.IdCategoria;");
+                datos.SetConsulta("SELECT A.codigo, A.nombre, A.descripcion, I.ImagenURL, A.precio, C.descripcion categoria, M.descripcion marca FROM ARTICULOS A, Categorias C, Marcas M, Imagenes I WHERE A.IdMarca = M.Id AND C.Id = A.IdCategoria AND A.Id = I.IdArticulo;");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())

@@ -16,7 +16,7 @@ namespace Catalogo.Negocio
 
         public AccesoADatos()
         {
-            _conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true") ;
+            _conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true") ;
             _comando = new SqlCommand();
         }
         public void SetConsulta(string consulta)
