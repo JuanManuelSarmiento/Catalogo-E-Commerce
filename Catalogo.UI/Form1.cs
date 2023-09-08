@@ -26,21 +26,21 @@ namespace Catalogo.UI
             listaArticulo = articuloNegocio.Listar();
             dgvArticulos.DataSource = listaArticulo;
             dgvArticulos.Columns["imagenUrl"].Visible = false;
-            pbxArticulo.Load(listaArticulo[0].ImagenURL);
+            CargarImagen(listaArticulo[0].ImagenURL);
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.ImagenURL);
+            CargarImagen(seleccionado.ImagenURL);
         }
-        private void cargarImagen(string Imagen)
+        private void CargarImagen(string Imagen)
         {
             try
             {
                 pbxArticulo.Load(Imagen);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGVlwDhbC-6RixbdgEwDrABJ6BD3hhM2eJA&usqp=CAU");
             }
