@@ -21,6 +21,8 @@ namespace Catalogo.Negocio
                 datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
                 datos.SetParametro("@urlImagen", newEntity.ImagenURL);
                 datos.SetParametro("@precio", newEntity.Precio);
+
+                datos.EjecutarLectura();
             }
             catch (Exception ex)
             {

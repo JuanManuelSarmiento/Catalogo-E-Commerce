@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Catalogo.Dominio;
+using Catalogo.Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,13 +26,41 @@ namespace Catalogo.UI
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
-            frmAltaArticulo altaArticulo = new frmAltaArticulo();
-
+            MarcaNegocio marca = new MarcaNegocio();
+            CategoriaNegocio categoria = new CategoriaNegocio();
+            try
+            {
+                cboMarca.DataSource = marca.Listar();
+                cboCategoria.DataSource = categoria.Listar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnAlta_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            decimal.TryParse(txtPrecio.Text, out decimal auxPrecio);
+            Articulo aux = new Articulo
+            {
+                Codigo = txtCodigo.Text,
+                Nombre = txtNombre.Text,
+                Descripcion = txtDescripcion.Text,
+                Marca = (Marca)cboMarca.SelectedItem,
+                Categoria = (Categoria)cboCategoria.SelectedItem,
+                ImagenURL = txtImagen.Text,
+                Precio = auxPrecio
+            };
+
+            artNegocio.Add(aux);
+            MessageBox.Show("Agregado exitosamente");
         }
     }
 }
