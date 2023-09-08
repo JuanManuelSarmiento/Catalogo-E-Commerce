@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Catalogo.Dominio;
+using Catalogo.Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,11 +20,30 @@ namespace Catalogo.UI
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            Articulo aux = new Articulo();
+            //aux.Codigo = (Articulo)cboCodigo.SelectedItem;
+
+            artNegocio.Delete(aux);
+            MessageBox.Show("Eliminado exitosamente");
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void frmBajaArticulo_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+
+            try
+            {
+                cboCodigo.DataSource = artNegocio.Listar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

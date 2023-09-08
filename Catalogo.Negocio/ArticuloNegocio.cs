@@ -34,11 +34,25 @@ namespace Catalogo.Negocio
             }
         }
 
-        public void Delete(Articulo Entity)
+        public void Delete(Articulo newEntity)
         {
-
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetParametro("@codigo", newEntity.Codigo);
+                datos.SetConsulta("DELETE FROM ARTICULOS WHERE CODIGO = '@codigo'");
+                
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
-
         public void Update(Articulo Entity) { }
 
         public List<Articulo> Listar()
