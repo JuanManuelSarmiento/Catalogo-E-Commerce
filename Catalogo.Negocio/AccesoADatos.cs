@@ -38,6 +38,11 @@ namespace Catalogo.Negocio
                 throw ex;
             }  
         }
+
+        public void SetParametro(string parametro, object valor)
+        {
+            _comando.Parameters.AddWithValue(parametro, valor); 
+        }
         public void CerrarConexion()
         {
             if (_lector != null)
