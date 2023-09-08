@@ -9,7 +9,7 @@ namespace Catalogo.Negocio
 {
     interface IABML<T>
     {
-        void Create(T newEntity);
+        void Add(T newEntity);
         void Delete(T entity);
         void Update(T entity);
         List<T> Listar();
