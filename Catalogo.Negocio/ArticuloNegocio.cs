@@ -13,13 +13,13 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion, M.Descripcion, C.Descripcion, I.ImagenUrl, A.Precio FROM ARTICULOS A INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id INNER JOIN MARCAS MON A.IdMarca = M.Id INNER JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datos.SetConsulta("INSERT INTO ARTICULOS (Codigo,Nombre ,Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) VALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@urlImagen,@precio);");
                 datos.SetParametro("@codigo", newEntity.Codigo);
                 datos.SetParametro("@nombre", newEntity.Nombre);
                 datos.SetParametro("@descripcion", newEntity.Descripcion);
                 datos.SetParametro("@idMarca", newEntity.Marca.Id);
                 datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
-                datos.SetParametro("@urlImagen", newEntity.ImagenURL);
+                datos.SetParametro("@urlImagen", newEntity.Imagen.ImagenUrl);
                 datos.SetParametro("@precio", newEntity.Precio);
 
                 datos.EjecutarLectura();
@@ -62,7 +62,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.codigo, A.nombre, A.descripcion, I.ImagenURL, A.precio, C.descripcion categoria, M.descripcion marca FROM ARTICULOS A, Categorias C, Marcas M, Imagenes I WHERE A.IdMarca = M.Id AND C.Id = A.IdCategoria AND A.Id = I.IdArticulo;");
+                datos.SetConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id INNER JOIN MARCAS M ON A.IdMarca = M.Id INNER JOIN IMAGENES I ON A.Id = I.IdArticulo");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -70,14 +70,15 @@ namespace Catalogo.Negocio
                     Articulo aux = new Articulo();
                     aux.Marca = new Marca();
                     aux.Categoria = new Categoria();
+                    aux.Imagen = new Imagen();
 
-                    aux.Codigo = (string)datos.Lector["codigo"];
-                    aux.Nombre = (string)datos.Lector["nombre"];
-                    aux.Descripcion = (string)datos.Lector["descripcion"];
-                    aux.Marca.Descripcion = (string)datos.Lector["marca"];
-                    aux.Categoria.Descripcion = (string)datos.Lector["categoria"];
-                    aux.ImagenURL = (string)datos.Lector["ImagenURL"];
-                    aux.Precio = (decimal)datos.Lector["precio"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
 
                     articulos.Add(aux);
 
