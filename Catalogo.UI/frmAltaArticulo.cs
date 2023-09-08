@@ -18,12 +18,6 @@ namespace Catalogo.UI
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
             MarcaNegocio marca = new MarcaNegocio();

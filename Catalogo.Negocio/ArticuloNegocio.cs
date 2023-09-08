@@ -34,7 +34,10 @@ namespace Catalogo.Negocio
             }
         }
 
-        public void Delete(Articulo Entity) { }
+        public void Delete(Articulo Entity)
+        {
+
+        }
 
         public void Update(Articulo Entity) { }
 

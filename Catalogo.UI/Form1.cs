@@ -51,5 +51,16 @@ namespace Catalogo.UI
             frmAltaArticulo altaArticulo = new frmAltaArticulo();
             altaArticulo.ShowDialog();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            frmBajaArticulo bajaArticulo = new frmBajaArticulo();
+            bajaArticulo.ShowDialog();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

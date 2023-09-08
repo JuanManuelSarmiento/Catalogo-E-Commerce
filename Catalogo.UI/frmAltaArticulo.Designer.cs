@@ -54,7 +54,6 @@
             this.lblCodigo.Size = new System.Drawing.Size(43, 13);
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Codigo:";
-            this.lblCodigo.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblNombre
             // 
