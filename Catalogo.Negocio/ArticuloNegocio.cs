@@ -40,7 +40,7 @@ namespace Catalogo.Negocio
             try
             {
                 datos.SetParametro("@codigo", newEntity.Codigo);
-                datos.SetConsulta("DELETE FROM ARTICULOS WHERE CODIGO = '@codigo'");
+                datos.SetConsulta("DELETE FROM ARTICULOS WHERE Codigo = @codigo");
                 
                 datos.EjecutarLectura();
             }
