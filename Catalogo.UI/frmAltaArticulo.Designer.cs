@@ -149,6 +149,7 @@
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(121, 20);
             this.txtImagen.TabIndex = 5;
+            this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // lblPrecio
             // 

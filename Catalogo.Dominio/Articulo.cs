@@ -20,9 +20,5 @@ namespace Catalogo.Dominio
         [DisplayName("Imágen")]
         public Imagen Imagen { get; set; }
         public decimal Precio { get; set; }
-        public override string ToString()
-        {
-            return Codigo;
-        }
     }
 }

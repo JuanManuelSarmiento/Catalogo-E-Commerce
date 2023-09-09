@@ -51,10 +51,28 @@ namespace Catalogo.UI
                 Categoria = (Categoria)cboCategoria.SelectedItem,
                 Precio = auxPrecio
             };
+            Imagen aux2 = new Imagen();
+            aux2.ImagenUrl = txtImagen.Text;
 
             artNegocio.Add(aux);
             MessageBox.Show("Agregado exitosamente");
             Close();
+        }
+
+        private void txtImagen_Leave(object sender, EventArgs e)
+        {
+            CargarImagen(txtImagen.Text);
+        }
+        private void CargarImagen(string Imagen)
+        {
+            try
+            {
+                pbxArticulo.Load(Imagen);
+            }
+            catch (Exception)
+            {
+                pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGVlwDhbC-6RixbdgEwDrABJ6BD3hhM2eJA&usqp=CAU");
+            }
         }
     }
 }
