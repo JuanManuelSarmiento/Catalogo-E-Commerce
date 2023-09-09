@@ -51,7 +51,6 @@ namespace Catalogo.UI
                 Categoria = (Categoria)cboCategoria.SelectedItem,
                 Precio = auxPrecio
             };
-            aux.Imagen.ImagenUrl = txtImagen.Text;
 
             artNegocio.Add(aux);
             MessageBox.Show("Agregado exitosamente");

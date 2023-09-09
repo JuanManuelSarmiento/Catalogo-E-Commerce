@@ -13,13 +13,12 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("INSERT INTO ARTICULOS (Codigo,Nombre ,Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) VALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@urlImagen,@precio);");
+                datos.SetConsulta("INSERT INTO ARTICULOS (Codigo,Nombre ,Descripcion, IdMarca, IdCategoria, Precio) VALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@precio);");
                 datos.SetParametro("@codigo", newEntity.Codigo);
                 datos.SetParametro("@nombre", newEntity.Nombre);
                 datos.SetParametro("@descripcion", newEntity.Descripcion);
                 datos.SetParametro("@idMarca", newEntity.Marca.Id);
                 datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
-                datos.SetParametro("@urlImagen", newEntity.Imagen.ImagenUrl);
                 datos.SetParametro("@precio", newEntity.Precio);
 
                 datos.EjecutarLectura();
