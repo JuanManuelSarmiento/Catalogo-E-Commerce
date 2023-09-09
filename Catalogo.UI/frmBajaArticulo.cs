@@ -21,12 +21,12 @@ namespace Catalogo.UI
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
-            string codigoSeleccionado = cboCodigo.SelectedItem.ToString(); ;
-            Articulo aux = new Articulo()
-            {
+            /*string codigoSeleccionado = cboCodigo.SelectedItem.ToString();*/
+            Articulo aux = new Articulo();
+            /*{
                 Codigo = codigoSeleccionado
-            };
-
+            };*/
+            aux = (Articulo)cboCodigo.SelectedItem;
             artNegocio.Delete(aux);
 
             MessageBox.Show("Eliminado exitosamente");

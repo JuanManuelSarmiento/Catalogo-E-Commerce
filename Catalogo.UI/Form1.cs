@@ -22,10 +22,18 @@ namespace Catalogo.UI
         private void Form1_Load_1(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            listaArticulo = articuloNegocio.Listar();
-            dgvArticulos.DataSource = listaArticulo;
-            dgvArticulos.Columns["Imagen"].Visible = false;
-            CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
+            try
+            {
+                listaArticulo = articuloNegocio.Listar();
+                dgvArticulos.DataSource = listaArticulo;
+                dgvArticulos.Columns["Imagen"].Visible = false;
+                CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
