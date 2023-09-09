@@ -23,6 +23,7 @@ namespace Catalogo.UI
         {
             InitializeComponent();
             this.articulo = articulo;
+            Text = "Modificar Artículo";
         }
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
@@ -61,21 +62,41 @@ namespace Catalogo.UI
         private void btnAlta_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
-            decimal.TryParse(txtPrecio.Text, out decimal auxPrecio);
-            Articulo aux = new Articulo
-            {
-                Codigo = txtCodigo.Text,
-                Nombre = txtNombre.Text,
-                Descripcion = txtDescripcion.Text,
-                ImagenUrl = txtImagen.Text,
-                Marca = (Marca)cboMarca.SelectedItem,
-                Categoria = (Categoria)cboCategoria.SelectedItem,
-                Precio = auxPrecio
-            };
 
-            artNegocio.Add(aux);
-            MessageBox.Show("Agregado exitosamente");
-            Close();
+            try
+            {
+                if(articulo == null)
+                    articulo = new Articulo();
+                decimal.TryParse(txtPrecio.Text, out decimal auxPrecio);
+                Articulo aux = new Articulo
+                {
+                    Codigo = txtCodigo.Text,
+                    Nombre = txtNombre.Text,
+                    Descripcion = txtDescripcion.Text,
+                    ImagenUrl = txtImagen.Text,
+                    Marca = (Marca)cboMarca.SelectedItem,
+                    Categoria = (Categoria)cboCategoria.SelectedItem,
+                    Precio = auxPrecio
+                };
+
+                if(aux.Id != 0)
+                {
+                    artNegocio.Update(aux);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    artNegocio.Add(aux);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+
+                Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void txtImagen_Leave(object sender, EventArgs e)

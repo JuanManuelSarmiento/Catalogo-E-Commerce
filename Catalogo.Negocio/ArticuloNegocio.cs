@@ -54,7 +54,20 @@ namespace Catalogo.Negocio
                 datos.CerrarConexion();
             }
         }
-        public void Update(Articulo Entity) { }
+        public void Update(Articulo Entity)
+        {
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                //PROVISORIO - A TERMINAR
+                datos.SetConsulta("SELECT * FROM ARTICULOS\r\nUPDATE ARTICULOS SET Codigo = '', Nombre = '', Descripcion = '', IdMarca = '', IdCategoria = '', Precio = ''\r\nWHERE ID = ''");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         public List<Articulo> Listar()
         {
