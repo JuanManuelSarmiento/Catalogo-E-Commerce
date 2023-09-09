@@ -47,12 +47,11 @@ namespace Catalogo.UI
                 Codigo = txtCodigo.Text,
                 Nombre = txtNombre.Text,
                 Descripcion = txtDescripcion.Text,
+                ImagenUrl = txtImagen.Text,
                 Marca = (Marca)cboMarca.SelectedItem,
                 Categoria = (Categoria)cboCategoria.SelectedItem,
                 Precio = auxPrecio
             };
-            Imagen aux2 = new Imagen();
-            aux2.ImagenUrl = txtImagen.Text;
 
             artNegocio.Add(aux);
             MessageBox.Show("Agregado exitosamente");

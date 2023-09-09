@@ -9,6 +9,7 @@ namespace Catalogo.Dominio
 {
     public class Articulo
     {
+        public int Id { get; set; }
         [DisplayName("Código")]
         public string Codigo { get; set; }
         public string Nombre { get; set; }
@@ -18,6 +19,7 @@ namespace Catalogo.Dominio
         [DisplayName("Categoría")]
         public Categoria Categoria { get; set; }
         [DisplayName("Imágen")]
+        public string ImagenUrl { get; set; }
         public Imagen Imagen { get; set; }
         public decimal Precio { get; set; }
         public override string ToString()
