@@ -31,7 +31,7 @@
             this.lblCodigo = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.cboCodigo = new System.Windows.Forms.ComboBox();
+            this.cboNombre = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -39,9 +39,9 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Location = new System.Drawing.Point(28, 25);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(40, 13);
+            this.lblCodigo.Size = new System.Drawing.Size(44, 13);
             this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Código";
+            this.lblCodigo.Text = "Nombre";
             // 
             // btnEliminar
             // 
@@ -63,21 +63,21 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // cboCodigo
+            // cboNombre
             // 
-            this.cboCodigo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCodigo.FormattingEnabled = true;
-            this.cboCodigo.Location = new System.Drawing.Point(75, 25);
-            this.cboCodigo.Name = "cboCodigo";
-            this.cboCodigo.Size = new System.Drawing.Size(121, 21);
-            this.cboCodigo.TabIndex = 0;
+            this.cboNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNombre.FormattingEnabled = true;
+            this.cboNombre.Location = new System.Drawing.Point(78, 22);
+            this.cboNombre.Name = "cboNombre";
+            this.cboNombre.Size = new System.Drawing.Size(121, 21);
+            this.cboNombre.TabIndex = 0;
             // 
             // frmBajaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 143);
-            this.Controls.Add(this.cboCodigo);
+            this.Controls.Add(this.cboNombre);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.lblCodigo);
@@ -94,6 +94,6 @@
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.ComboBox cboCodigo;
+        private System.Windows.Forms.ComboBox cboNombre;
     }
 }
