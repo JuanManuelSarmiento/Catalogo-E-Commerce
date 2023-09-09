@@ -48,7 +48,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(31, 74);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.TabIndex = 1;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -58,7 +58,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(132, 74);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -70,7 +70,7 @@
             this.cboCodigo.Location = new System.Drawing.Point(75, 25);
             this.cboCodigo.Name = "cboCodigo";
             this.cboCodigo.Size = new System.Drawing.Size(121, 21);
-            this.cboCodigo.TabIndex = 4;
+            this.cboCodigo.TabIndex = 0;
             // 
             // frmBajaArticulo
             // 
