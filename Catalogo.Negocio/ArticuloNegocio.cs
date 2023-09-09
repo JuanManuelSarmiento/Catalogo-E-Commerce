@@ -13,12 +13,11 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("INSERT INTO ARTICULOS (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio)\r\nVALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@precio)\r\nSELECT A.Id From ARTICULOS A\r\ninner join IMAGENES I ON I.IdArticulo = A.Id\r\nINSERT INTO IMAGENES (IdArticulo, ImagenUrl)\r\nVALUES (@IdArticulo,@urlImagen);");
+                datos.SetConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) \r\nVALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@precio);");
                 datos.SetParametro("@IdArticulo", newEntity.Id);
                 datos.SetParametro("@codigo", newEntity.Codigo);
                 datos.SetParametro("@nombre", newEntity.Nombre);
                 datos.SetParametro("@descripcion", newEntity.Descripcion);
-                datos.SetParametro("@urlImagen", newEntity.ImagenUrl);
                 datos.SetParametro("@idMarca", newEntity.Marca.Id);
                 datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
                 datos.SetParametro("@precio", newEntity.Precio);
@@ -40,8 +39,8 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetParametro("@codigo", newEntity.Codigo);
-                datos.SetConsulta("DELETE FROM ARTICULOS WHERE Codigo = @codigo");
+                datos.SetParametro("@id", newEntity.Id);
+                datos.SetConsulta("DELETE FROM ARTICULOS WHERE Id = @id");
                 
                 datos.EjecutarLectura();
             }
@@ -89,7 +88,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.IdMArca, A.IdCategoria, A.Descripcion, M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datos.SetConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -103,28 +102,39 @@ namespace Catalogo.Negocio
                     aux.Id = (int)datos.Lector["Id"];
 
                     if (!(datos.Lector["Codigo"] is DBNull))
-                    aux.Codigo = (string)datos.Lector["Codigo"];
+                        aux.Codigo = (string)datos.Lector["Codigo"];
+                    else
+                        aux.Codigo = "";
 
                     if (!(datos.Lector["Nombre"] is DBNull))
-                    aux.Nombre = (string)datos.Lector["Nombre"];
+                        aux.Nombre = (string)datos.Lector["Nombre"];
+                    else
+                        aux.Nombre = "";
 
                     if (!(datos.Lector["Descripcion"] is DBNull))
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-
-                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                        aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    else
+                        aux.Descripcion = "";
 
                     if (!(datos.Lector["Marca"] is DBNull))
-                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-
-                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    else
+                        aux.Marca.Descripcion = "";
 
                     if (!(datos.Lector["Categoria"] is DBNull))
-                    aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    else
+                        aux.Categoria.Descripcion = "";
 
-                    aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    else
+                        aux.Imagen.ImagenUrl = "";
 
                     if (!(datos.Lector["Precio"] is DBNull))
-                    aux.Precio = (decimal)datos.Lector["Precio"];
+                        aux.Precio = (decimal)datos.Lector["Precio"];
+                    else
+                        aux.Precio = 0;
 
                     articulos.Add(aux);
 
