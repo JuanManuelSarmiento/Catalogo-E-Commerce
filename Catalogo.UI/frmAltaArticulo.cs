@@ -42,8 +42,8 @@ namespace Catalogo.UI
                     txtCodigo.Text = articulo.Codigo.ToString();
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
-                    txtImagen.Text = articulo.ImagenUrl;
-                    CargarImagen(articulo.ImagenUrl);
+                    txtImagen.Text = articulo.Imagen.ImagenUrl;
+                    CargarImagen(articulo.Imagen.ImagenUrl);
                     cboMarca.SelectedValue =articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                 }
@@ -73,7 +73,6 @@ namespace Catalogo.UI
                     Codigo = txtCodigo.Text,
                     Nombre = txtNombre.Text,
                     Descripcion = txtDescripcion.Text,
-                    ImagenUrl = txtImagen.Text,
                     Marca = (Marca)cboMarca.SelectedItem,
                     Categoria = (Categoria)cboCategoria.SelectedItem,
                     Precio = auxPrecio

@@ -26,6 +26,7 @@ namespace Catalogo.UI
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
+
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             CargarImagen(seleccionado.Imagen.ImagenUrl);
         }
@@ -56,7 +57,6 @@ namespace Catalogo.UI
                 listaArticulo = articuloNegocio.Listar();
                 dgvArticulos.DataSource = listaArticulo;
                 dgvArticulos.Columns["id"].Visible = false;
-                dgvArticulos.Columns["ImagenUrl"].Visible = false;
                 dgvArticulos.Columns["Imagen"].Visible = false;
                 CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
             }

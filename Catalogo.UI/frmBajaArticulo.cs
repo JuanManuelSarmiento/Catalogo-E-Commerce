@@ -21,10 +21,9 @@ namespace Catalogo.UI
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
-            string codigoSeleccionado = cboNombre.SelectedItem.ToString();
-            Articulo aux = new Articulo();
+            // string codigoSeleccionado = cboNombre.SelectedItem.ToString());
 
-            aux.Codigo = codigoSeleccionado;
+            Articulo aux = (Articulo)cboNombre.SelectedItem;
 
             artNegocio.Delete(aux);
 
@@ -44,7 +43,6 @@ namespace Catalogo.UI
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
