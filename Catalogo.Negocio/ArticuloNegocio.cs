@@ -54,18 +54,31 @@ namespace Catalogo.Negocio
                 datos.CerrarConexion();
             }
         }
-        public void Update(Articulo Entity)
+        public void Update(Articulo newEntity)
         {
             AccesoADatos datos = new AccesoADatos();
             try
             {
                 //PROVISORIO - A TERMINAR
-                datos.SetConsulta("SELECT * FROM ARTICULOS\r\nUPDATE ARTICULOS SET Codigo = '', Nombre = '', Descripcion = '', IdMarca = '', IdCategoria = '', Precio = ''\r\nWHERE ID = ''");
+                datos.SetConsulta("SELECT * FROM ARTICULOS\r\nUPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio\r\nWHERE ID = @id");
+                datos.SetParametro("@codigo", newEntity.Codigo);
+                datos.SetParametro("@nombre", newEntity.Nombre);
+                datos.SetParametro("@descripcion", newEntity.Descripcion);
+                datos.SetParametro("@idMarca", newEntity.Marca.Id);
+                datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
+                datos.SetParametro("@precio", newEntity.Precio);
+                datos.SetParametro("@id", newEntity.Id);
+
+                datos.EjecutarLectura();
             }
             catch (Exception ex)
             {
 
                 throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
             }
         }
 
