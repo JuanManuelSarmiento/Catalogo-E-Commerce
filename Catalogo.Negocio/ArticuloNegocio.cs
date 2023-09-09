@@ -67,16 +67,29 @@ namespace Catalogo.Negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+
                     aux.Marca = new Marca();
                     aux.Categoria = new Categoria();
                     aux.Imagen = new Imagen();
 
+                    if (!(datos.Lector["Codigo"] is DBNull));
                     aux.Codigo = (string)datos.Lector["Codigo"];
+
+                    if (!(datos.Lector["Nombre"] is DBNull));
                     aux.Nombre = (string)datos.Lector["Nombre"];
+
+                    if (!(datos.Lector["Descripcion"] is DBNull)) ;
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    if (!(datos.Lector["Marca"] is DBNull)) ;
                     aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+
+                    if (!(datos.Lector["Categoria"] is DBNull)) ;
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+
                     aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    if (!(datos.Lector["Precio"] is DBNull)) ;
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
                     articulos.Add(aux);
