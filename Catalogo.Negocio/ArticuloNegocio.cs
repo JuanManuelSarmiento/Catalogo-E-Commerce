@@ -61,7 +61,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id INNER JOIN MARCAS M ON A.IdMarca = M.Id INNER JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datos.SetConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -78,18 +78,18 @@ namespace Catalogo.Negocio
                     if (!(datos.Lector["Nombre"] is DBNull));
                     aux.Nombre = (string)datos.Lector["Nombre"];
 
-                    if (!(datos.Lector["Descripcion"] is DBNull)) ;
+                    if (!(datos.Lector["Descripcion"] is DBNull));
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
 
-                    if (!(datos.Lector["Marca"] is DBNull)) ;
+                    if (!(datos.Lector["Marca"] is DBNull));
                     aux.Marca.Descripcion = (string)datos.Lector["Marca"];
 
-                    if (!(datos.Lector["Categoria"] is DBNull)) ;
+                    if (!(datos.Lector["Categoria"] is DBNull));
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
 
                     aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
 
-                    if (!(datos.Lector["Precio"] is DBNull)) ;
+                    if (!(datos.Lector["Precio"] is DBNull));
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
                     articulos.Add(aux);

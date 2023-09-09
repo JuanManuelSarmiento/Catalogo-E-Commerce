@@ -68,6 +68,7 @@ namespace Catalogo.UI
         {
             frmBajaArticulo bajaArticulo = new frmBajaArticulo();
             bajaArticulo.ShowDialog();
+            cargar();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
