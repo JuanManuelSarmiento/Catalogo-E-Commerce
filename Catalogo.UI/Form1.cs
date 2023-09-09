@@ -21,19 +21,7 @@ namespace Catalogo.UI
         }
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            try
-            {
-                listaArticulo = articuloNegocio.Listar();
-                dgvArticulos.DataSource = listaArticulo;
-                dgvArticulos.Columns["Imagen"].Visible = false;
-                CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
+            cargar();
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -57,8 +45,25 @@ namespace Catalogo.UI
         {
             frmAltaArticulo altaArticulo = new frmAltaArticulo();
             altaArticulo.ShowDialog();
+            cargar();
         }
 
+        private void cargar()
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                listaArticulo = articuloNegocio.Listar();
+                dgvArticulos.DataSource = listaArticulo;
+                dgvArticulos.Columns["Imagen"].Visible = false;
+                CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             frmBajaArticulo bajaArticulo = new frmBajaArticulo();
