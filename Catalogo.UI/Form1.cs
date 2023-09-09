@@ -55,6 +55,8 @@ namespace Catalogo.UI
             {
                 listaArticulo = articuloNegocio.Listar();
                 dgvArticulos.DataSource = listaArticulo;
+                dgvArticulos.Columns["id"].Visible = false;
+                dgvArticulos.Columns["ImagenUrl"].Visible = false;
                 dgvArticulos.Columns["Imagen"].Visible = false;
                 CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
             }
@@ -74,6 +76,16 @@ namespace Catalogo.UI
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
         }
     }
 }

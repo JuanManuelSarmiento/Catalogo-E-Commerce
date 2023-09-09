@@ -14,9 +14,15 @@ namespace Catalogo.UI
 {
     public partial class frmAltaArticulo : Form
     {
+        private Articulo articulo = null;
         public frmAltaArticulo()
         {
             InitializeComponent();
+        }
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
         }
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
@@ -25,7 +31,21 @@ namespace Catalogo.UI
             try
             {
                 cboMarca.DataSource = marca.Listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DataSource = categoria.Listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+                if (articulo != null)
+                {
+                    txtCodigo.Text = articulo.Codigo.ToString();
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtImagen.Text = articulo.ImagenUrl;
+                    CargarImagen(articulo.ImagenUrl);
+                    cboMarca.SelectedValue =articulo.Marca.Id;
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
+                }
             }
             catch (Exception ex)
             {

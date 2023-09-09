@@ -13,7 +13,7 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio)\r\nVALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@precio)\r\nSELECT A.Id From ARTICULOS A\r\ninner join IMAGENES I ON I.IdArticulo = A.Id\r\nINSERT INTO IMAGENES (IdArticulo, ImagenUrl)\r\nVALUES (@IdArticulo,@urlImagen);");
+                datos.SetConsulta("INSERT INTO ARTICULOS (Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio)\r\nVALUES (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@precio)\r\nSELECT A.Id From ARTICULOS A\r\ninner join IMAGENES I ON I.IdArticulo = A.Id\r\nINSERT INTO IMAGENES (IdArticulo, ImagenUrl)\r\nVALUES (@IdArticulo,@urlImagen);");
                 datos.SetParametro("@IdArticulo", newEntity.Id);
                 datos.SetParametro("@codigo", newEntity.Codigo);
                 datos.SetParametro("@nombre", newEntity.Nombre);
@@ -63,7 +63,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datos.SetConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.IdMArca, A.IdCategoria, A.Descripcion, M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -74,6 +74,8 @@ namespace Catalogo.Negocio
                     aux.Categoria = new Categoria();
                     aux.Imagen = new Imagen();
 
+                    aux.Id = (int)datos.Lector["Id"];
+
                     if (!(datos.Lector["Codigo"] is DBNull))
                     aux.Codigo = (string)datos.Lector["Codigo"];
 
@@ -83,8 +85,12 @@ namespace Catalogo.Negocio
                     if (!(datos.Lector["Descripcion"] is DBNull))
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
 
+                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
+
                     if (!(datos.Lector["Marca"] is DBNull))
                     aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+
+                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
 
                     if (!(datos.Lector["Categoria"] is DBNull))
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
