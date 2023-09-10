@@ -116,5 +116,15 @@ namespace Catalogo.UI
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGVlwDhbC-6RixbdgEwDrABJ6BD3hhM2eJA&usqp=CAU");
             }
         }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg";
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }
