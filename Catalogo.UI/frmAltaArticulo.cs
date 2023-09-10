@@ -25,6 +25,7 @@ namespace Catalogo.UI
         {
             InitializeComponent();
             this.articulo = articulo;
+
             Text = "Modificar Artículo";
         }
         private void frmAltaArticulo_Load(object sender, EventArgs e)
@@ -78,12 +79,13 @@ namespace Catalogo.UI
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = auxPrecio;
-                
+                //articulo.Imagen.IdArticulo = articulo.Id;
+                articulo.Imagen.ImagenUrl = txtImagen.Text;
 
                 if(articulo.Id != 0)
                 {
                     artNegocio.Update(articulo);
-                    artNegocio.UpdateImage(articulo.Imagen);
+                    artNegocio.UpdateImage(articulo);
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else

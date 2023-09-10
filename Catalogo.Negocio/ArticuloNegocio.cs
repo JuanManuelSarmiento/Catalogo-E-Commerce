@@ -81,14 +81,18 @@ namespace Catalogo.Negocio
             }
         }
         
-        public void UpdateImage(Imagen img)
+
+        //REVISAR ACÁ
+        public void UpdateImage(Articulo art)
         {
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("UPDATE IMAGENES SET ImagenUrl = @imagenUrl WHERE IdArticulo = @idArticulo");
-                datos.SetParametro("@imagenUrl", img.ImagenUrl);
-                datos.SetParametro("@idArticulo", img.IdArticulo);
+                datos.SetConsulta("UPDATE IMAGENES SET ImagenUrl = @imagenUrl WHERE IdArticulo = @IdArticulo AND ID = @id");
+                //datos.SetConsulta("UPDATE IMAGENES SET ImagenUrl = @imagenUrl WHERE IdArticulo = @IdArticulo");
+                datos.SetParametro("@imagenUrl", art.Imagen.ImagenUrl);
+                datos.SetParametro("@idArticulo", art.Id);
+                datos.SetParametro("@id", art.Imagen.Id);
 
                 datos.EjecutarLectura();
             }
@@ -110,7 +114,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio, A.IdCategoria, A.IdMarca FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datos.SetConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, I.Id AS IdImagen, A.Precio, A.IdCategoria, A.IdMarca FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -122,6 +126,7 @@ namespace Catalogo.Negocio
                     aux.Imagen = new Imagen();
 
                     aux.Id = (int)datos.Lector["Id"];
+                    aux.Imagen.IdArticulo = (int)datos.Lector["Id"];
 
                     if (!(datos.Lector["Codigo"] is DBNull))
                         aux.Codigo = (string)datos.Lector["Codigo"];
@@ -152,6 +157,13 @@ namespace Catalogo.Negocio
                         aux.Imagen.ImagenUrl = (string)datos.Lector["ImagenUrl"];
                     else
                         aux.Imagen.ImagenUrl = "";
+
+                    if (!(datos.Lector["IdImagen"] is DBNull))
+                    {
+                    aux.Imagen.Id = (int)datos.Lector["IdImagen"];
+                    }
+
+
 
                     if (!(datos.Lector["Precio"] is DBNull))
                         aux.Precio = (decimal)datos.Lector["Precio"];
