@@ -68,8 +68,26 @@ namespace Catalogo.UI
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            frmBajaArticulo bajaArticulo = new frmBajaArticulo();
-            bajaArticulo.ShowDialog();
+            //frmBajaArticulo bajaArticulo = new frmBajaArticulo();
+            //bajaArticulo.ShowDialog();
+
+            ArticuloNegocio articulo = new ArticuloNegocio();
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Eliminar Articulo???", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes) 
+                {
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    articulo.Delete(seleccionado);
+                    MessageBox.Show("Eliminado exitosamente");
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
             cargar();
         }
 
