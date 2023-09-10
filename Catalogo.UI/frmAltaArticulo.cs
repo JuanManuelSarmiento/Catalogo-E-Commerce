@@ -15,6 +15,8 @@ namespace Catalogo.UI
     public partial class frmAltaArticulo : Form
     {
         private Articulo articulo = null;
+        
+
         public frmAltaArticulo()
         {
             InitializeComponent();
@@ -39,13 +41,14 @@ namespace Catalogo.UI
                 cboCategoria.DisplayMember = "Descripcion";
                 if (articulo != null)
                 {
-                    txtCodigo.Text = articulo.Codigo.ToString();
+                    txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
                     txtImagen.Text = articulo.Imagen.ImagenUrl;
                     CargarImagen(articulo.Imagen.ImagenUrl);
-                    cboMarca.SelectedValue =articulo.Marca.Id;
+                    cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
+                    txtPrecio.Text = articulo.Precio.ToString();
                 }
             }
             catch (Exception ex)
@@ -68,24 +71,24 @@ namespace Catalogo.UI
                 if(articulo == null)
                     articulo = new Articulo();
                 decimal.TryParse(txtPrecio.Text, out decimal auxPrecio);
-                Articulo aux = new Articulo
-                {
-                    Codigo = txtCodigo.Text,
-                    Nombre = txtNombre.Text,
-                    Descripcion = txtDescripcion.Text,
-                    Marca = (Marca)cboMarca.SelectedItem,
-                    Categoria = (Categoria)cboCategoria.SelectedItem,
-                    Precio = auxPrecio
-                };
 
-                if(aux.Id != 0)
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Precio = auxPrecio;
+                
+
+                if(articulo.Id != 0)
                 {
-                    artNegocio.Update(aux);
+                    artNegocio.Update(articulo);
+                    artNegocio.UpdateImage(articulo.Imagen);
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
-                    artNegocio.Add(aux);
+                    artNegocio.Add(articulo);
                     MessageBox.Show("Agregado exitosamente");
                 }
 

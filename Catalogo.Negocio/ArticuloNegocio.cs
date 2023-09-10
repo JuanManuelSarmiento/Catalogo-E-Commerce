@@ -58,8 +58,7 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                //PROVISORIO - A TERMINAR
-                datos.SetConsulta("SELECT * FROM ARTICULOS\r\nUPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio\r\nWHERE ID = @id");
+                datos.SetConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE ID = @id");
                 datos.SetParametro("@codigo", newEntity.Codigo);
                 datos.SetParametro("@nombre", newEntity.Nombre);
                 datos.SetParametro("@descripcion", newEntity.Descripcion);
@@ -67,6 +66,7 @@ namespace Catalogo.Negocio
                 datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
                 datos.SetParametro("@precio", newEntity.Precio);
                 datos.SetParametro("@id", newEntity.Id);
+                
 
                 datos.EjecutarLectura();
             }
@@ -80,7 +80,29 @@ namespace Catalogo.Negocio
                 datos.CerrarConexion();
             }
         }
+        
+        public void UpdateImage(Imagen img)
+        {
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("UPDATE IMAGENES SET ImagenUrl = @imagenUrl WHERE IdArticulo = @idArticulo");
+                datos.SetParametro("@imagenUrl", img.ImagenUrl);
+                datos.SetParametro("@idArticulo", img.IdArticulo);
 
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        
         public List<Articulo> Listar()
         {
             List<Articulo> articulos = new List<Articulo>();
@@ -88,7 +110,7 @@ namespace Catalogo.Negocio
 
             try
             {
-                datos.SetConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datos.SetConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion , M.Descripcion as Marca, C.Descripcion as Categoria, I.ImagenUrl, A.Precio, A.IdCategoria, A.IdMarca FROM ARTICULOS A LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -135,6 +157,16 @@ namespace Catalogo.Negocio
                         aux.Precio = (decimal)datos.Lector["Precio"];
                     else
                         aux.Precio = 0;
+
+                    if (!(datos.Lector["IdCategoria"] is DBNull))
+                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    else
+                        aux.Categoria.Id = 0;
+
+                    if (!(datos.Lector["IdMarca"] is DBNull))
+                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    else
+                        aux.Categoria.Id = 1;
 
                     articulos.Add(aux);
 
