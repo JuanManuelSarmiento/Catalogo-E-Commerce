@@ -1,6 +1,7 @@
 ﻿using Catalogo.Dominio;
 using Catalogo.Negocio;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,14 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Catalogo.UI
 {
     public partial class frmAltaArticulo : Form
     {
         private Articulo articulo = null;
-        
-
+        private OpenFileDialog archivo = null;
         public frmAltaArticulo()
         {
             InitializeComponent();
@@ -94,6 +95,12 @@ namespace Catalogo.UI
                     MessageBox.Show("Agregado exitosamente");
                 }
 
+                //Guardo imagen si la levanto localmente
+                if(archivo != null && !(txtImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                }    
+                
                 Close();
             }
             catch (Exception ex)
@@ -116,6 +123,20 @@ namespace Catalogo.UI
             catch (Exception)
             {
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGVlwDhbC-6RixbdgEwDrABJ6BD3hhM2eJA&usqp=CAU");
+            }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "JPeg|*.JPeg;|jpg|*.jpg;|png|*.png";
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtImagen.Text = archivo.FileName;
+                CargarImagen(archivo.FileName);
+
+                //guardo imagen
+                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
             }
         }
     }
