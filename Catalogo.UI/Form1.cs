@@ -26,9 +26,11 @@ namespace Catalogo.UI
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            CargarImagen(seleccionado.Imagen.ImagenUrl);
+            if(dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                CargarImagen(seleccionado.Imagen.ImagenUrl);
+            }
         }
         private void CargarImagen(string Imagen)
         {
@@ -56,8 +58,7 @@ namespace Catalogo.UI
             {
                 listaArticulo = articuloNegocio.Listar();
                 dgvArticulos.DataSource = listaArticulo;
-                dgvArticulos.Columns["id"].Visible = false;
-                dgvArticulos.Columns["Imagen"].Visible = false;
+                ocultarColumnas();
                 CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
             }
             catch (Exception ex)
@@ -65,6 +66,11 @@ namespace Catalogo.UI
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["id"].Visible = false;
+            dgvArticulos.Columns["Imagen"].Visible = false;
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -111,6 +117,25 @@ namespace Catalogo.UI
                 modificar.ShowDialog();
                 cargar();
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if(filtro != "")
+            {
+                listaFiltrada = listaArticulo.FindAll(x => x.Codigo.ToUpper().Contains(filtro.ToUpper()) || x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaArticulo;
+            }
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
