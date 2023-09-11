@@ -15,6 +15,7 @@ namespace Catalogo.UI
     public partial class frmArticulos : Form
     {
         private List<Articulo> listaArticulo;
+        
         public frmArticulos()
         {
             InitializeComponent();

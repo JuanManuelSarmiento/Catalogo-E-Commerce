@@ -99,6 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Catalogo.Common\Catalogo.Common.csproj">
+      <Project>{835a2299-7d65-44c8-b1bf-31dc92cea588}</Project>
+      <Name>Catalogo.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Catalogo.Dominio\Catalogo.Dominio.csproj">
       <Project>{53794531-32B9-412A-B253-3BF5E9051D71}</Project>
       <Name>Catalogo.Dominio</Name>

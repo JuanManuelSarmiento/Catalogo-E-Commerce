@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using Catalogo.Common;
 
 namespace Catalogo.UI
 {
@@ -18,21 +19,27 @@ namespace Catalogo.UI
     {
         private Articulo articulo = null;
         private OpenFileDialog archivo = null;
+        private bool esEdicion;
+        private Validar validaciones;
         public frmAltaArticulo()
         {
             InitializeComponent();
+            esEdicion = false;
+            validaciones = new Validar();
         }
         public frmAltaArticulo(Articulo articulo)
         {
             InitializeComponent();
             this.articulo = articulo;
-
+            esEdicion = true;
             Text = "Modificar Artículo";
         }
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
             MarcaNegocio marca = new MarcaNegocio();
             CategoriaNegocio categoria = new CategoriaNegocio();
+
+            
             try
             {
                 cboMarca.DataSource = marca.Listar();
@@ -41,7 +48,8 @@ namespace Catalogo.UI
                 cboCategoria.DataSource = categoria.Listar();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
-                if (articulo != null)
+                
+                if (esEdicion)
                 {
                     txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
@@ -51,6 +59,11 @@ namespace Catalogo.UI
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                     txtPrecio.Text = articulo.Precio.ToString();
+                }
+                else
+                {
+                    cboMarca.SelectedValue = -1;
+                    cboCategoria.SelectedValue = -1;
                 }
             }
             catch (Exception ex)
@@ -83,7 +96,7 @@ namespace Catalogo.UI
                 articulo.Precio = auxPrecio;
                 string dirImagen = txtImagen.Text;
 
-                if(articulo.Id != 0)
+                if(esEdicion)
                 {
                     artNegocio.Update(articulo);
                     artNegocio.UpdateImage(articulo);
@@ -91,6 +104,11 @@ namespace Catalogo.UI
                 }
                 else
                 {
+                    if(validaciones.ValidarCbo(cboMarca.SelectedValue) && validaciones.ValidarCbo(cboCategoria.SelectedValue))
+                        {
+                        MessageBox.Show("El campo Marca y Categoria no pueden quedar vacios");
+                        return;
+                        }
                     artNegocio.Add(articulo);
                     articulo = artNegocio.Listar().First();
                     articulo.Imagen = new Imagen();
