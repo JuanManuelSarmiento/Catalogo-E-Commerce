@@ -67,9 +67,11 @@ namespace Catalogo.UI
         private void btnAlta_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
-
+            ImagenNegocio imgNegocio = new ImagenNegocio();
+            string dirImagen;
             try
             {
+                
                 if(articulo == null)
                     articulo = new Articulo();
                 decimal.TryParse(txtPrecio.Text, out decimal auxPrecio);
@@ -80,8 +82,7 @@ namespace Catalogo.UI
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = auxPrecio;
-                //articulo.Imagen.IdArticulo = articulo.Id;
-                articulo.Imagen.ImagenUrl = txtImagen.Text;
+                dirImagen = txtImagen.Text;
 
                 if(articulo.Id != 0)
                 {
@@ -92,6 +93,15 @@ namespace Catalogo.UI
                 else
                 {
                     artNegocio.Add(articulo);
+                    articulo = artNegocio.Listar().First();
+                    articulo.Imagen = new Imagen();
+                    articulo.Imagen.IdArticulo = articulo.Id;
+                    articulo.Imagen.ImagenUrl = dirImagen;
+                    imgNegocio.Add(articulo.Imagen);
+                    artNegocio.Update(articulo);
+                    
+
+                     
                     MessageBox.Show("Agregado exitosamente");
                 }
 
