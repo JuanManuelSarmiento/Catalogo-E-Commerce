@@ -109,6 +109,17 @@ namespace Catalogo.UI
                         MessageBox.Show("El campo Marca y Categoria no pueden quedar vacios");
                         return;
                         }
+                    if(string.IsNullOrEmpty(txtCodigo.Text))
+                    {
+                        MessageBox.Show("El campo Codigo no puede quedar vacio");
+                        return;
+                    }
+                    if (string.IsNullOrEmpty(txtNombre.Text))
+                    {
+                        MessageBox.Show("El campo Nombre no puede quedar vacio");
+                        return;
+                    }
+
                     artNegocio.Add(articulo);
                     articulo = artNegocio.Listar().First();
                     articulo.Imagen = new Imagen();
