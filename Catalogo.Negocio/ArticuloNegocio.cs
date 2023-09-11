@@ -184,7 +184,7 @@ namespace Catalogo.Negocio
 
                 }
 
-                return articulos;
+                return articulos.OrderByDescending(a => a.Id).ToList();
             }
             catch (Exception ex)
             {
