@@ -68,7 +68,6 @@ namespace Catalogo.UI
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
             ImagenNegocio imgNegocio = new ImagenNegocio();
-            string dirImagen;
             try
             {
                 
@@ -82,7 +81,7 @@ namespace Catalogo.UI
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = auxPrecio;
-                dirImagen = txtImagen.Text;
+                string dirImagen = txtImagen.Text;
 
                 if(articulo.Id != 0)
                 {
