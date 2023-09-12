@@ -82,14 +82,12 @@ namespace Catalogo.Negocio
         }
         
 
-        //REVISAR ACÁ
         public void UpdateImage(Articulo art)
         {
             AccesoADatos datos = new AccesoADatos();
             try
             {
                 datos.SetConsulta("UPDATE IMAGENES SET ImagenUrl = @imagenUrl WHERE IdArticulo = @IdArticulo AND ID = @id");
-                //datos.SetConsulta("UPDATE IMAGENES SET ImagenUrl = @imagenUrl WHERE IdArticulo = @IdArticulo");
                 datos.SetParametro("@imagenUrl", art.Imagen.ImagenUrl);
                 datos.SetParametro("@idArticulo", art.Id);
                 datos.SetParametro("@id", art.Imagen.Id);

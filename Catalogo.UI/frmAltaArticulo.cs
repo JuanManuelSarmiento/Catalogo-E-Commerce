@@ -94,9 +94,10 @@ namespace Catalogo.UI
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = auxPrecio;
-                string dirImagen = txtImagen.Text;
+                articulo.Imagen.ImagenUrl = txtImagen.Text;
+                //string dirImagen = txtImagen.Text;
 
-                if(esEdicion)
+                if (esEdicion)
                 {
                     artNegocio.Update(articulo);
                     artNegocio.UpdateImage(articulo);
@@ -124,7 +125,7 @@ namespace Catalogo.UI
                     articulo = artNegocio.Listar().First();
                     articulo.Imagen = new Imagen();
                     articulo.Imagen.IdArticulo = articulo.Id;
-                    articulo.Imagen.ImagenUrl = dirImagen;
+                    articulo.Imagen.ImagenUrl = txtImagen.Text;
                     imgNegocio.Add(articulo.Imagen);
                     artNegocio.Update(articulo);
                     
