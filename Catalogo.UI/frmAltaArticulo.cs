@@ -94,12 +94,13 @@ namespace Catalogo.UI
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = auxPrecio;
-                articulo.Imagen.ImagenUrl = txtImagen.Text;
-                //string dirImagen = txtImagen.Text;
+                
+                
 
-                if (esEdicion)
+                if(esEdicion)
                 {
                     artNegocio.Update(articulo);
+                    articulo.Imagen.ImagenUrl = txtImagen.Text;
                     artNegocio.UpdateImage(articulo);
                     MessageBox.Show("Modificado exitosamente");
                 }
