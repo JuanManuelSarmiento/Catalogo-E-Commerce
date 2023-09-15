@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Catalogo.Dominio;
 using Catalogo.Negocio;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Catalogo.UI
 {
@@ -55,7 +56,14 @@ namespace Catalogo.UI
                 listaArticulo = articuloNegocio.Listar();
                 dgvArticulos.DataSource = listaArticulo;
                 ocultarColumnas();
+                //Probar Ajuste de Tamaño de Form con tamaño de grilla
+                dgvArticulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                pbxArticulo.Height = dgvArticulos.Height - 105;
+                //------------------
                 CargarImagen(listaArticulo[0].Imagen.ImagenUrl);
+                //Probar Ajuste de Tamaño de Form con tamaño de grilla
+                ajustarAltoGrilla();
+                //------------------
             }
             catch (Exception ex)
             {
@@ -105,10 +113,6 @@ namespace Catalogo.UI
                 MessageBox.Show(ex.ToString());
             }
 
-
-        }
-        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
-        {
 
         }
         private void txtFiltro_TextChanged(object sender, EventArgs e)
@@ -203,5 +207,37 @@ namespace Catalogo.UI
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
             lblFecha.Text = DateTime.Now.ToLongDateString();
         }
+        //Probar Ajuste de Tamaño de Form con tamaño de grilla
+        private void ajustarAltoGrilla()
+        {
+            //PROBAR
+            //-----------------
+            int AltoGridIni = dgvArticulos.Height;
+            int AltoGrid = 0;
+            int AltoForm = this.Height;
+            int Diferencia = 0;
+            AltoGrid = AltoGrid + dgvArticulos.ColumnHeadersHeight;
+
+            for (int i = 0; i <= dgvArticulos.Rows.Count - 1; i++)
+            {
+                AltoGrid = AltoGrid + dgvArticulos.Rows[i].Height;
+            }
+            Diferencia = AltoGridIni - AltoGrid;
+
+            if (Diferencia > 0)
+            {
+                AltoForm = AltoForm - Diferencia;
+                this.Height = AltoForm;
+            }
+            else if (Diferencia < 0)
+            {
+                AltoForm = AltoForm + Diferencia;
+                this.Height = AltoForm;
+            }
+            dgvArticulos.Height = AltoGrid;
+            // -----------------
+        }
+        //------------------
+
     }
 }
