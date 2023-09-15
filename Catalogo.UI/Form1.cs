@@ -198,7 +198,6 @@ namespace Catalogo.UI
         {
             Close();
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss");

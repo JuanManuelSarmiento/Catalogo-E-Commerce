@@ -64,7 +64,7 @@ namespace Catalogo.UI
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(55, 73);
+            this.dgvArticulos.Location = new System.Drawing.Point(12, 56);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -74,7 +74,7 @@ namespace Catalogo.UI
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(725, 73);
+            this.pbxArticulo.Location = new System.Drawing.Point(682, 56);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(228, 301);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -84,15 +84,15 @@ namespace Catalogo.UI
             // lblFiltro
             // 
             this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(52, 50);
+            this.lblFiltro.Location = new System.Drawing.Point(9, 33);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(29, 13);
+            this.lblFiltro.Size = new System.Drawing.Size(40, 13);
             this.lblFiltro.TabIndex = 4;
-            this.lblFiltro.Text = "Filtro";
+            this.lblFiltro.Text = "Buscar";
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(87, 47);
+            this.txtFiltro.Location = new System.Drawing.Point(55, 30);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(100, 20);
             this.txtFiltro.TabIndex = 5;
@@ -101,7 +101,7 @@ namespace Catalogo.UI
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(538, 384);
+            this.btnBuscar.Location = new System.Drawing.Point(495, 367);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 6;
@@ -112,7 +112,7 @@ namespace Catalogo.UI
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(52, 387);
+            this.lblCampo.Location = new System.Drawing.Point(9, 370);
             this.lblCampo.Name = "lblCampo";
             this.lblCampo.Size = new System.Drawing.Size(40, 13);
             this.lblCampo.TabIndex = 7;
@@ -121,7 +121,7 @@ namespace Catalogo.UI
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(225, 387);
+            this.lblCriterio.Location = new System.Drawing.Point(182, 370);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(39, 13);
             this.lblCriterio.TabIndex = 8;
@@ -130,7 +130,7 @@ namespace Catalogo.UI
             // lblFiltroAvanzado
             // 
             this.lblFiltroAvanzado.AutoSize = true;
-            this.lblFiltroAvanzado.Location = new System.Drawing.Point(397, 387);
+            this.lblFiltroAvanzado.Location = new System.Drawing.Point(354, 370);
             this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
             this.lblFiltroAvanzado.Size = new System.Drawing.Size(29, 13);
             this.lblFiltroAvanzado.TabIndex = 9;
@@ -138,7 +138,7 @@ namespace Catalogo.UI
             // 
             // txtFiltroAvanzado
             // 
-            this.txtFiltroAvanzado.Location = new System.Drawing.Point(432, 384);
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(389, 367);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(100, 20);
             this.txtFiltroAvanzado.TabIndex = 12;
@@ -147,7 +147,7 @@ namespace Catalogo.UI
             // 
             this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(98, 384);
+            this.cboCampo.Location = new System.Drawing.Point(55, 367);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(121, 21);
             this.cboCampo.TabIndex = 13;
@@ -157,14 +157,14 @@ namespace Catalogo.UI
             // 
             this.cboCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCriterio.FormattingEnabled = true;
-            this.cboCriterio.Location = new System.Drawing.Point(270, 384);
+            this.cboCriterio.Location = new System.Drawing.Point(227, 367);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(121, 21);
             this.cboCriterio.TabIndex = 14;
             // 
             // btnRestablecer
             // 
-            this.btnRestablecer.Location = new System.Drawing.Point(619, 384);
+            this.btnRestablecer.Location = new System.Drawing.Point(576, 367);
             this.btnRestablecer.Name = "btnRestablecer";
             this.btnRestablecer.Size = new System.Drawing.Size(77, 23);
             this.btnRestablecer.TabIndex = 15;
@@ -183,7 +183,7 @@ namespace Catalogo.UI
             this.salirToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(921, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -244,7 +244,7 @@ namespace Catalogo.UI
             // lblHora
             // 
             this.lblHora.AutoSize = true;
-            this.lblHora.Location = new System.Drawing.Point(616, 421);
+            this.lblHora.Location = new System.Drawing.Point(573, 404);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(30, 13);
             this.lblHora.TabIndex = 17;
@@ -257,7 +257,7 @@ namespace Catalogo.UI
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(397, 421);
+            this.lblFecha.Location = new System.Drawing.Point(354, 404);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(37, 13);
             this.lblFecha.TabIndex = 18;
@@ -267,7 +267,7 @@ namespace Catalogo.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 438);
+            this.ClientSize = new System.Drawing.Size(921, 422);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.btnRestablecer);

@@ -1,4 +1,5 @@
-﻿using Catalogo.Dominio;
+﻿
+using Catalogo.Dominio;
 using Catalogo.Negocio;
 using System;
 using System.IO;
@@ -70,12 +71,10 @@ namespace Catalogo.UI
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void btnAlta_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
@@ -93,8 +92,6 @@ namespace Catalogo.UI
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = auxPrecio;
-                
-                
 
                 if(esEdicion)
                 {
@@ -128,9 +125,7 @@ namespace Catalogo.UI
                     articulo.Imagen.ImagenUrl = txtImagen.Text;
                     imgNegocio.Add(articulo.Imagen);
                     artNegocio.Update(articulo);
-                    
 
-                     
                     MessageBox.Show("Agregado exitosamente");
                 }
 
@@ -148,7 +143,6 @@ namespace Catalogo.UI
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void txtImagen_Leave(object sender, EventArgs e)
         {
             CargarImagen(txtImagen.Text);
@@ -164,7 +158,6 @@ namespace Catalogo.UI
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGVlwDhbC-6RixbdgEwDrABJ6BD3hhM2eJA&usqp=CAU");
             }
         }
-
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
             archivo = new OpenFileDialog();
