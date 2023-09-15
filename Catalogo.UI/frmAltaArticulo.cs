@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using Catalogo.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Catalogo.UI
 {
@@ -38,8 +39,6 @@ namespace Catalogo.UI
         {
             MarcaNegocio marca = new MarcaNegocio();
             CategoriaNegocio categoria = new CategoriaNegocio();
-
-            
             try
             {
                 cboMarca.DataSource = marca.Listar();

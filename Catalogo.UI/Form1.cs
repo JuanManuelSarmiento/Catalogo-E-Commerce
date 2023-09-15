@@ -15,7 +15,6 @@ namespace Catalogo.UI
     public partial class frmArticulos : Form
     {
         private List<Articulo> listaArticulo;
-        
         public frmArticulos()
         {
             InitializeComponent();
@@ -28,7 +27,6 @@ namespace Catalogo.UI
             cboCampo.Items.Add("Categoria");
             cboCampo.Items.Add("Precio");
         }
-
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             if(dgvArticulos.CurrentRow != null)
@@ -48,14 +46,12 @@ namespace Catalogo.UI
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGVlwDhbC-6RixbdgEwDrABJ6BD3hhM2eJA&usqp=CAU");
             }
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaArticulo altaArticulo = new frmAltaArticulo();
             altaArticulo.ShowDialog();
             cargar();
         }
-
         private void cargar()
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -68,7 +64,6 @@ namespace Catalogo.UI
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -101,12 +96,10 @@ namespace Catalogo.UI
             }
             cargar();
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado;
@@ -123,7 +116,6 @@ namespace Catalogo.UI
                 cargar();
             }
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             /*
@@ -164,12 +156,10 @@ namespace Catalogo.UI
 
 
         }
-
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
         {
 
         }
-
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
@@ -188,7 +178,6 @@ namespace Catalogo.UI
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
         }
-
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = cboCampo.SelectedItem.ToString();
@@ -207,10 +196,25 @@ namespace Catalogo.UI
                 cboCriterio.Items.Add("Contiene");
             }
         }
-
         private void btnRestablecer_Click(object sender, EventArgs e)
         {
             cargar();
+        }
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnAgregar_Click(sender, e);
+        }
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnModificar_Click(sender, e);
+        }
+        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            btnEliminar_Click(sender, e);
+        }
+        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            btnSalir_Click(sender, e);
         }
     }
 }
