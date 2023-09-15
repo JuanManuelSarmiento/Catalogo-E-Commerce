@@ -23,6 +23,10 @@ namespace Catalogo.UI
         private void Form1_Load_1(object sender, EventArgs e)
         {
             cargar();
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoria");
+            cboCampo.Items.Add("Precio");
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -122,6 +126,7 @@ namespace Catalogo.UI
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            /*
             List<Articulo> listaFiltrada;
             string filtro = txtFiltro.Text;
 
@@ -137,6 +142,27 @@ namespace Catalogo.UI
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+            */
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+
+                dgvArticulos.DataSource = negocio.Filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
@@ -161,6 +187,30 @@ namespace Catalogo.UI
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear ();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnRestablecer_Click(object sender, EventArgs e)
+        {
+            cargar();
         }
     }
 }
