@@ -21,6 +21,7 @@ namespace Catalogo.UI
         }
         private void Form1_Load_1(object sender, EventArgs e)
         {
+            timer1.Enabled = true;
             cargar();
             cboCampo.Items.Add("Nombre");
             cboCampo.Items.Add("Marca");
@@ -46,12 +47,6 @@ namespace Catalogo.UI
                 pbxArticulo.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROGVlwDhbC-6RixbdgEwDrABJ6BD3hhM2eJA&usqp=CAU");
             }
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmAltaArticulo altaArticulo = new frmAltaArticulo();
-            altaArticulo.ShowDialog();
-            cargar();
-        }
         private void cargar()
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -71,50 +66,6 @@ namespace Catalogo.UI
         {
             dgvArticulos.Columns["id"].Visible = false;
             dgvArticulos.Columns["Imagen"].Visible = false;
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            //frmBajaArticulo bajaArticulo = new frmBajaArticulo();
-            //bajaArticulo.ShowDialog();
-
-            ArticuloNegocio articulo = new ArticuloNegocio();
-            try
-            {
-                DialogResult respuesta = MessageBox.Show("Eliminar Articulo???", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(respuesta == DialogResult.Yes) 
-                {
-                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    articulo.Delete(seleccionado);
-                    MessageBox.Show("Eliminado exitosamente");
-                    cargar();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-            cargar();
-        }
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            Articulo seleccionado;
-            if(dgvArticulos.CurrentCell is null)
-            {
-                MessageBox.Show("Debe Seleccionar un Artículo");
-            }
-            else
-            {
-                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-
-                frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-                modificar.ShowDialog();
-                cargar();
-            }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -202,19 +153,56 @@ namespace Catalogo.UI
         }
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnAgregar_Click(sender, e);
+            frmAltaArticulo altaArticulo = new frmAltaArticulo();
+            altaArticulo.ShowDialog();
+            cargar();
         }
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnModificar_Click(sender, e);
+            Articulo seleccionado;
+            if (dgvArticulos.CurrentCell is null)
+            {
+                MessageBox.Show("Debe Seleccionar un Artículo");
+            }
+            else
+            {
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
         }
         private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            btnEliminar_Click(sender, e);
+            ArticuloNegocio articulo = new ArticuloNegocio();
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Eliminar Articulo???", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    articulo.Delete(seleccionado);
+                    MessageBox.Show("Eliminado exitosamente");
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            cargar();
         }
         private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            btnSalir_Click(sender, e);
+            Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
+            lblFecha.Text = DateTime.Now.ToLongDateString();
         }
     }
 }
