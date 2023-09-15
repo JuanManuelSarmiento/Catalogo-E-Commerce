@@ -65,35 +65,73 @@ namespace Catalogo.UI
                 MessageBox.Show(ex.ToString());
             }
         }
+
+
         private void ocultarColumnas()
         {
             dgvArticulos.Columns["id"].Visible = false;
             dgvArticulos.Columns["Imagen"].Visible = false;
         }
+
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe seleccionar un campo para filtar.");
+                return true;
+            }
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe seleccionar un criterio para filtar.");
+                return true;
+            }
+            if(txtFiltroAvanzado.Text.Length == 0)
+            {
+                MessageBox.Show("Debe cargar el filtro para la búsqueda.");
+                return true;
+            }
+            if (cboCampo.SelectedItem.ToString() == "Precio" )
+            {
+                if(string.IsNullOrEmpty(txtFiltroAvanzado.Text)) 
+                {
+                    MessageBox.Show("Debe cargar el filtro para numéricos.");
+                    return true;
+                }
+                if (!(validarNumeros(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("Solo se pueden ingresar números para filtrar por campos numéricos.");
+                    return true;
+                }
+                return false;
+            }
+
+            return false;
+        }
+
+
+        private bool validarNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            /*
-            List<Articulo> listaFiltrada;
-            string filtro = txtFiltro.Text;
-
-            if(filtro != "")
-            {
-                listaFiltrada = listaArticulo.FindAll(x => x.Codigo.ToUpper().Contains(filtro.ToUpper()) || x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
-            }
-            else
-            {
-                listaFiltrada = listaArticulo;
-            }
-
-            dgvArticulos.DataSource = null;
-            dgvArticulos.DataSource = listaFiltrada;
-            ocultarColumnas();
-            */
 
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
+                if (validarFiltro())
+                    return;
 
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
@@ -149,6 +187,7 @@ namespace Catalogo.UI
         private void btnRestablecer_Click(object sender, EventArgs e)
         {
             cargar();
+            txtFiltroAvanzado.Text = "";
         }
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
