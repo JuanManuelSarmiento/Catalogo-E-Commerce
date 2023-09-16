@@ -85,10 +85,13 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("UPDATE CATEGORIAS SET Descripcion = @descripcion WHERE ID = @id");
-                datos.SetParametro("@id", newEntity.Id);
-                datos.SetParametro("@descripcion", newEntity.Descripcion);
-                datos.EjecutarLectura();
+                //------------------
+                //FALTA TERMINAR
+                //datos.SetConsulta("UPDATE CATEGORIAS SET Descripcion = 'NUEVA-DESCRIPCION' WHERE Descripcion = 'VIEJA-DESCRIPCION'");
+                //datos.SetParametro("@id", newEntity.Descripcion);
+                //datos.SetParametro("@descripcion", nuevaDescripcion);
+                //datos.EjecutarLectura();
+                //------------------
             }
             catch (Exception ex)
             {
