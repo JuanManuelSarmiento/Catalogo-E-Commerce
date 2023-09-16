@@ -64,6 +64,7 @@ namespace Catalogo.UI
             this.lblHora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblFecha = new System.Windows.Forms.Label();
+            this.btnImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -275,21 +276,21 @@ namespace Catalogo.UI
             // modificarArticuloToolStripMenuItem
             // 
             this.modificarArticuloToolStripMenuItem.Name = "modificarArticuloToolStripMenuItem";
-            this.modificarArticuloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarArticuloToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarArticuloToolStripMenuItem.Text = "Articulo";
             this.modificarArticuloToolStripMenuItem.Click += new System.EventHandler(this.modificarArticuloToolStripMenuItem_Click);
             // 
             // modificarMarcaToolStripMenuItem
             // 
             this.modificarMarcaToolStripMenuItem.Name = "modificarMarcaToolStripMenuItem";
-            this.modificarMarcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarMarcaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarMarcaToolStripMenuItem.Text = "Marca";
             this.modificarMarcaToolStripMenuItem.Click += new System.EventHandler(this.modificarMarcaToolStripMenuItem_Click);
             // 
             // modificarCategoriaToolStripMenuItem
             // 
             this.modificarCategoriaToolStripMenuItem.Name = "modificarCategoriaToolStripMenuItem";
-            this.modificarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.modificarCategoriaToolStripMenuItem.Text = "Categoria";
             this.modificarCategoriaToolStripMenuItem.Click += new System.EventHandler(this.modificarCategoriaToolStripMenuItem_Click);
             // 
@@ -343,11 +344,22 @@ namespace Catalogo.UI
             this.lblFecha.TabIndex = 18;
             this.lblFecha.Text = "Fecha";
             // 
+            // btnImagen
+            // 
+            this.btnImagen.Location = new System.Drawing.Point(750, 367);
+            this.btnImagen.Name = "btnImagen";
+            this.btnImagen.Size = new System.Drawing.Size(104, 23);
+            this.btnImagen.TabIndex = 19;
+            this.btnImagen.Text = "Cambiar imagen";
+            this.btnImagen.UseVisualStyleBackColor = true;
+            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 422);
+            this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.btnRestablecer);
@@ -413,6 +425,7 @@ namespace Catalogo.UI
         private System.Windows.Forms.ToolStripMenuItem modificarArticuloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarMarcaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarCategoriaToolStripMenuItem;
+        private System.Windows.Forms.Button btnImagen;
     }
 }
 

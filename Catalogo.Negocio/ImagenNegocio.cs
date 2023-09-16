@@ -38,34 +38,60 @@ namespace Catalogo.Negocio
 
         public List<Imagen> Listar()
         {
-            throw new NotImplementedException();
-            //datos = new AccesoADatos();
-            //try
-            //{
-            //    datos.SetConsulta("Select Id,ImagenUrl from IMAGENES where IdArticulo = @articulo");
-            //    datos.SetParametro("@articulo", art.Id);
-            //    List<Imagen> lista = new List<Imagen>();
-            //    while(datos.Lector.Read())
-            //    {
-            //        Imagen aux = new Imagen
-            //        {
-            //            Id = (int)datos.Lector["Id"],
-            //            IdArticulo = art.Id,
-            //            ImagenUrl = (string)datos.Lector["ImagenUrl"]
-            //        };
-
-            //        lista.Add(aux);
-            //    }
-            //    return lista;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-            //finally
-            //{
-            //    datos.CerrarConexion();
-            //}
+            datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("Select Id,IdArticulo, ImagenUrl from IMAGENES WHERE ImagenUrl != ''");
+                datos.EjecutarLectura();
+                var imagenes = new List<Imagen>();
+                while (datos.Lector.Read())
+                {
+                    var aux = new Imagen
+                    {
+                        Id = (int)datos.Lector["Id"],
+                        IdArticulo = (int)datos.Lector["IdArticulo"],
+                        ImagenUrl = (string)datos.Lector["ImagenUrl"]
+                    };
+                    imagenes.Add(aux);
+                }
+                return imagenes;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public List<Imagen> Listar(int idArticulo)
+        {
+            datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("Select ImagenUrl from IMAGENES where IdArticulo = @idArticulo");
+                datos.SetParametro("@idArticulo", idArticulo);
+                datos.EjecutarLectura();
+                List<Imagen> imagenes = new List<Imagen>();
+                while (datos.Lector.Read())
+                {
+                    var aux = new Imagen
+                    {
+                        ImagenUrl = (string)datos.Lector["ImagenUrl"]
+                    };
+                    imagenes.Add(aux);
+                }
+                return imagenes;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
            
         }
 

@@ -303,5 +303,21 @@ namespace Catalogo.UI
             frmModificarCategoria modificarCategoria = new frmModificarCategoria();
             modificarCategoria.ShowDialog();
         }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            if (dgvArticulos.CurrentCell is null)
+            {
+                MessageBox.Show("Debe Seleccionar un Artículo");
+            }
+            else
+            {
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmImagen cambiarImagen = new frmImagen(seleccionado);
+                cambiarImagen.ShowDialog();
+                cargar();
+            }
+        }
     }
 }
