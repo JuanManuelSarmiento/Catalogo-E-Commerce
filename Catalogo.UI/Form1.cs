@@ -202,7 +202,7 @@ namespace Catalogo.UI
                 cargar();
             }
         }
-        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void eliminarArticuloToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articulo = new ArticuloNegocio();
             try
@@ -244,7 +244,30 @@ namespace Catalogo.UI
         {
             frmAltaMarca altaMarca = new frmAltaMarca();
             altaMarca.ShowDialog();
-            cargar();
+        }
+
+        private void eliminarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBajaMarca bajaMarca = new frmBajaMarca();
+            bajaMarca.ShowDialog();
+
+            MarcaNegocio marca = new MarcaNegocio();
+            try
+            {
+
+                /*DialogResult respuesta = MessageBox.Show("Eliminar MArca???", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Marca seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    marca.Delete(seleccionado);
+                    MessageBox.Show("Eliminado exitosamente");
+                }*/
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Catalogo.UI
     public partial class frmAltaMarca : Form
     {
         private Marca marca = null;
-        private OpenFileDialog archivo = null;
+        //private OpenFileDialog archivo = null;
         private bool esEdicion;
         private Validar validaciones;
         public frmAltaMarca()
@@ -56,11 +56,14 @@ namespace Catalogo.UI
                 }
                 else
                 {
+                    //-------------
+                    //COMPROBAR!!!
                     if (string.IsNullOrEmpty(txtDescripcion.Text))
                     {
-                        MessageBox.Show("El campo Descripción no puede quedar vacio");
+                        MessageBox.Show("El campo Nombre no puede quedar vacio");
                         return;
                     }
+                    //-------------
 
                     marcaNegocio.Add(marca);
                     marca = marcaNegocio.Listar().First();
@@ -74,6 +77,33 @@ namespace Catalogo.UI
             catch (Exception ex)
             {
 
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void frmAltaMarca_Load(object sender, EventArgs e)
+        {
+            //MarcaNegocio marca = new MarcaNegocio();
+            try
+            {
+                //cboMarca.DataSource = marca.Listar();
+                //cboMarca.ValueMember = "Id";
+                //cboMarca.DisplayMember = "Descripcion";
+                //cboCategoria.DataSource = categoria.Listar();
+                //cboCategoria.ValueMember = "Id";
+                //cboCategoria.DisplayMember = "Descripcion";
+
+                if (esEdicion)
+                {
+                    txtDescripcion.Text = marca.Descripcion;
+                }
+                else
+                {
+                    txtDescripcion.Text = " ";
+                }
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }

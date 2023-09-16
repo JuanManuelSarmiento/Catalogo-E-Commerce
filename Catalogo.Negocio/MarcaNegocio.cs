@@ -14,8 +14,8 @@ namespace Catalogo.Negocio
             AccesoADatos datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("INSERT INTO MARCAS(Id, Descripcion) \r\nVALUES (@id,@descripcion);");
-                datos.SetParametro("@id", newEntity.Id);
+                datos.SetConsulta("INSERT INTO MARCAS(Descripcion) \r\nVALUES (@descripcion);");
+                //datos.SetParametro("@id", newEntity.Id);
                 datos.SetParametro("@descripcion", newEntity.Descripcion);
 
                 datos.EjecutarLectura();
@@ -30,9 +30,24 @@ namespace Catalogo.Negocio
             }
         }
 
-        public void Delete(Marca entity)
+        public void Delete(Marca newEntity)
         {
-            throw new NotImplementedException();
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetParametro("@id", newEntity.Id);
+                datos.SetConsulta("DELETE FROM MARCAS WHERE Id = @Id AND NOT EXISTS (SELECT 1 FROM ARTICULOS WHERE Id = @Id)");
+
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
         public List<Marca> Listar()
@@ -65,9 +80,25 @@ namespace Catalogo.Negocio
             return lista;
         }
 
-        public void Update(Marca entity)
+        public void Update(Marca newEntity)
         {
-            throw new NotImplementedException();
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("UPDATE MARCAS SET Descripcion = @descripcion WHERE ID = @id");
+                datos.SetParametro("@id", newEntity.Id);
+                datos.SetParametro("@descripcion", newEntity.Descripcion);
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
     }
 }

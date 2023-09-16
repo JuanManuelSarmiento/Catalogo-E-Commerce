@@ -71,6 +71,12 @@
     <Compile Include="frmBajaArticulo.Designer.cs">
       <DependentUpon>frmBajaArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBajaMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBajaMarca.Designer.cs">
+      <DependentUpon>frmBajaMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBajaArticulo.resx">
       <DependentUpon>frmBajaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBajaMarca.resx">
+      <DependentUpon>frmBajaMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
