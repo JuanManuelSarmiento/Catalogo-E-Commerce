@@ -182,26 +182,6 @@ namespace Catalogo.UI
             cargar();
             txtFiltroAvanzado.Text = "";
         }
-        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Articulo seleccionado;
-            if (dgvArticulos.CurrentCell is null)
-            {
-                MessageBox.Show("Debe Seleccionar un Artículo");
-            }
-            else
-            {
-                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-
-                frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-                modificar.ShowDialog();
-                cargar();
-            }
-        }
         private void eliminarArticuloToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articulo = new ArticuloNegocio();
@@ -295,6 +275,33 @@ namespace Catalogo.UI
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void modificarArticuloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            if (dgvArticulos.CurrentCell is null)
+            {
+                MessageBox.Show("Debe Seleccionar un Artículo");
+            }
+            else
+            {
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
+        }
+
+        private void modificarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmModificarMarca modificarMarca = new frmModificarMarca();
+            modificarMarca.ShowDialog();
+        }
+        private void modificarCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmModificarCategoria modificarCategoria = new frmModificarCategoria();
+            modificarCategoria.ShowDialog();
         }
     }
 }
