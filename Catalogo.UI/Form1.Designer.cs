@@ -51,7 +51,7 @@ namespace Catalogo.UI
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -227,13 +227,14 @@ namespace Catalogo.UI
             this.agregarCategoríaToolStripMenuItem.Name = "agregarCategoríaToolStripMenuItem";
             this.agregarCategoríaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.agregarCategoríaToolStripMenuItem.Text = "Categoría";
+            this.agregarCategoríaToolStripMenuItem.Click += new System.EventHandler(this.agregarCategoríaToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eliminarArticuloToolStripMenuItem,
             this.eliminarMarcaToolStripMenuItem,
-            this.categoriaToolStripMenuItem});
+            this.eliminarCategoriaToolStripMenuItem});
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
@@ -252,11 +253,12 @@ namespace Catalogo.UI
             this.eliminarMarcaToolStripMenuItem.Text = "Marca";
             this.eliminarMarcaToolStripMenuItem.Click += new System.EventHandler(this.eliminarMarcaToolStripMenuItem_Click);
             // 
-            // categoriaToolStripMenuItem
+            // eliminarCategoriaToolStripMenuItem
             // 
-            this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.categoriaToolStripMenuItem.Text = "Categoria";
+            this.eliminarCategoriaToolStripMenuItem.Name = "eliminarCategoriaToolStripMenuItem";
+            this.eliminarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarCategoriaToolStripMenuItem.Text = "Categoria";
+            this.eliminarCategoriaToolStripMenuItem.Click += new System.EventHandler(this.eliminarCategoriaToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
@@ -381,7 +383,7 @@ namespace Catalogo.UI
         private System.Windows.Forms.ToolStripMenuItem agregarCategoríaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarArticuloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarMarcaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarCategoriaToolStripMenuItem;
     }
 }
 

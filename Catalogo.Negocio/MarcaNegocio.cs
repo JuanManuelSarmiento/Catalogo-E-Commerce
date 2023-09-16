@@ -36,7 +36,7 @@ namespace Catalogo.Negocio
             try
             {
                 datos.SetParametro("@id", newEntity.Id);
-                datos.SetConsulta("DELETE FROM MARCAS WHERE Id = @Id AND NOT EXISTS (SELECT 1 FROM ARTICULOS WHERE Id = @Id)");
+                datos.SetConsulta("DELETE FROM MARCAS WHERE Id = @Id AND NOT EXISTS (SELECT 1 FROM ARTICULOS WHERE IdMarca = @Id)");
 
                 datos.EjecutarLectura();
             }

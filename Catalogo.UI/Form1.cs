@@ -239,19 +239,46 @@ namespace Catalogo.UI
             altaArticulo.ShowDialog();
             cargar();
         }
-
         private void agregarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAltaMarca altaMarca = new frmAltaMarca();
             altaMarca.ShowDialog();
         }
-
         private void eliminarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmBajaMarca bajaMarca = new frmBajaMarca();
             bajaMarca.ShowDialog();
 
             MarcaNegocio marca = new MarcaNegocio();
+            try
+            {
+
+                /*DialogResult respuesta = MessageBox.Show("Eliminar MArca???", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Marca seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    marca.Delete(seleccionado);
+                    MessageBox.Show("Eliminado exitosamente");
+                }*/
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void agregarCategoríaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAltaCategoria altaCategoria = new frmAltaCategoria();
+            altaCategoria.ShowDialog();
+        }
+
+        private void eliminarCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBajaCategoria bajaCategoria = new frmBajaCategoria();
+            bajaCategoria.ShowDialog();
+
+            CategoriaNegocio categoria = new CategoriaNegocio();
             try
             {
 

@@ -4,54 +4,72 @@ using Catalogo.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Catalogo.UI
 {
-    public partial class frmAltaMarca : Form
+    public partial class frmAltaCategoria : Form
     {
-        private Marca marca = null;
+        private Categoria categoria = null;
         //private OpenFileDialog archivo = null;
         private bool esEdicion;
         private Validar validaciones;
-        public frmAltaMarca()
+        public frmAltaCategoria()
         {
             InitializeComponent();
             esEdicion = false;
             validaciones = new Validar();
         }
-        public frmAltaMarca(Marca marca)
+        public frmAltaCategoria(Categoria categoria)
         {
             InitializeComponent();
-            this.marca = marca;
+            this.categoria = categoria;
             esEdicion = true;
-            Text = "Modificar Marca";
+            Text = "Modificar Categoria";
         }
+        private void frmAltaCategoria_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (esEdicion)
+                {
+                    txtDescripcion.Text = categoria.Descripcion;
+                }
+                else
+                {
+                    txtDescripcion.Text = " ";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
+
         private void btnAlta_Click(object sender, EventArgs e)
         {
-            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             try
             {
 
-                if (marca == null)
-                    marca = new Marca();
+                if (categoria == null)
+                    categoria = new Categoria();
 
-                marca.Descripcion = txtDescripcion.Text;
+                categoria.Descripcion = txtDescripcion.Text;
 
                 if (esEdicion)
                 {
-                    marcaNegocio.Update(marca);
+                    categoriaNegocio.Update(categoria);
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
@@ -65,9 +83,9 @@ namespace Catalogo.UI
                     }
                     //-------------
 
-                    marcaNegocio.Add(marca);
-                    marca = marcaNegocio.Listar().First();
-                    marcaNegocio.Update(marca);
+                    categoriaNegocio.Add(categoria);
+                    categoria = categoriaNegocio.Listar().First();
+                    categoriaNegocio.Update(categoria);
 
                     MessageBox.Show("Agregado exitosamente");
                 }
@@ -77,33 +95,6 @@ namespace Catalogo.UI
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void frmAltaMarca_Load(object sender, EventArgs e)
-        {
-            //MarcaNegocio marca = new MarcaNegocio();
-            try
-            {
-                //cboMarca.DataSource = marca.Listar();
-                //cboMarca.ValueMember = "Id";
-                //cboMarca.DisplayMember = "Descripcion";
-                //cboCategoria.DataSource = categoria.Listar();
-                //cboCategoria.ValueMember = "Id";
-                //cboCategoria.DisplayMember = "Descripcion";
-
-                if (esEdicion)
-                {
-                    txtDescripcion.Text = marca.Descripcion;
-                }
-                else
-                {
-                    txtDescripcion.Text = " ";
-                }
-            }
-            catch (Exception ex)
-            {
                 MessageBox.Show(ex.Message);
             }
         }

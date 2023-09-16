@@ -11,12 +11,43 @@ namespace Catalogo.Negocio
     {
         public void Add(Categoria newEntity)
         {
-            throw new NotImplementedException();
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("INSERT INTO CATEGORIAS(Descripcion) \r\nVALUES (@descripcion);");
+                //datos.SetParametro("@id", newEntity.Id);
+                datos.SetParametro("@descripcion", newEntity.Descripcion);
+
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
-        public void Delete(Categoria entity)
+        public void Delete(Categoria newEntity)
         {
-            throw new NotImplementedException();
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetParametro("@id", newEntity.Id);
+                datos.SetConsulta("DELETE FROM CATEGORIAS WHERE Id = @Id AND NOT EXISTS (SELECT 1 FROM ARTICULOS WHERE IdCategoria = @Id)");
+
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
         public List<Categoria> Listar()
@@ -49,9 +80,25 @@ namespace Catalogo.Negocio
             return lista;
         }
 
-        public void Update(Categoria entity)
+        public void Update(Categoria newEntity)
         {
-            throw new NotImplementedException();
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("UPDATE CATEGORIAS SET Descripcion = @descripcion WHERE ID = @id");
+                datos.SetParametro("@id", newEntity.Id);
+                datos.SetParametro("@descripcion", newEntity.Descripcion);
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
     }
 }
