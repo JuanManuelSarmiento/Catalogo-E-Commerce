@@ -11,7 +11,23 @@ namespace Catalogo.Negocio
     {
         public void Add(Marca newEntity)
         {
-            throw new NotImplementedException();
+            AccesoADatos datos = new AccesoADatos();
+            try
+            {
+                datos.SetConsulta("INSERT INTO MARCAS(Id, Descripcion) \r\nVALUES (@id,@descripcion);");
+                datos.SetParametro("@id", newEntity.Id);
+                datos.SetParametro("@descripcion", newEntity.Descripcion);
+
+                datos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
         public void Delete(Marca entity)

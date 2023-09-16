@@ -55,6 +55,9 @@ namespace Catalogo.UI
             this.lblHora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblFecha = new System.Windows.Forms.Label();
+            this.agregarArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarCategoríaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -193,6 +196,10 @@ namespace Catalogo.UI
             // 
             // agregarToolStripMenuItem
             // 
+            this.agregarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarArticuloToolStripMenuItem,
+            this.agregarMarcaToolStripMenuItem,
+            this.agregarCategoríaToolStripMenuItem});
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             this.agregarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.agregarToolStripMenuItem.Text = "Agregar";
@@ -262,6 +269,26 @@ namespace Catalogo.UI
             this.lblFecha.TabIndex = 18;
             this.lblFecha.Text = "Fecha";
             // 
+            // agregarArticuloToolStripMenuItem
+            // 
+            this.agregarArticuloToolStripMenuItem.Name = "agregarArticuloToolStripMenuItem";
+            this.agregarArticuloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarArticuloToolStripMenuItem.Text = "Articulo";
+            this.agregarArticuloToolStripMenuItem.Click += new System.EventHandler(this.agregarArticuloToolStripMenuItem_Click);
+            // 
+            // agregarMarcaToolStripMenuItem
+            // 
+            this.agregarMarcaToolStripMenuItem.Name = "agregarMarcaToolStripMenuItem";
+            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarMarcaToolStripMenuItem.Text = "Marca";
+            this.agregarMarcaToolStripMenuItem.Click += new System.EventHandler(this.agregarMarcaToolStripMenuItem_Click);
+            // 
+            // agregarCategoríaToolStripMenuItem
+            // 
+            this.agregarCategoríaToolStripMenuItem.Name = "agregarCategoríaToolStripMenuItem";
+            this.agregarCategoríaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarCategoríaToolStripMenuItem.Text = "Categoría";
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +350,9 @@ namespace Catalogo.UI
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.ToolStripMenuItem agregarArticuloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarMarcaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarCategoríaToolStripMenuItem;
     }
 }
 

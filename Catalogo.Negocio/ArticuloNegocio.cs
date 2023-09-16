@@ -33,7 +33,6 @@ namespace Catalogo.Negocio
                 datos.CerrarConexion();
             }
         }
-
         public void Delete(Articulo newEntity)
         {
             AccesoADatos datos = new AccesoADatos();
@@ -80,8 +79,6 @@ namespace Catalogo.Negocio
                 datos.CerrarConexion();
             }
         }
-        
-
         public void UpdateImage(Articulo art)
         {
             AccesoADatos datos = new AccesoADatos();
@@ -104,7 +101,6 @@ namespace Catalogo.Negocio
                 datos.CerrarConexion();
             }
         }
-        
         public List<Articulo> Listar()
         {
             List<Articulo> articulos = new List<Articulo>();
@@ -194,7 +190,6 @@ namespace Catalogo.Negocio
             }
 
         }
-
         public List<Articulo> Filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> articulos = new List<Articulo>();

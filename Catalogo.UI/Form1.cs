@@ -65,14 +65,11 @@ namespace Catalogo.UI
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
         private void ocultarColumnas()
         {
             dgvArticulos.Columns["id"].Visible = false;
             dgvArticulos.Columns["Imagen"].Visible = false;
         }
-
         private bool validarFiltro()
         {
             if(cboCampo.SelectedIndex < 0)
@@ -107,8 +104,6 @@ namespace Catalogo.UI
 
             return false;
         }
-
-
         private bool validarNumeros(string cadena)
         {
             foreach (char caracter in cadena)
@@ -121,8 +116,6 @@ namespace Catalogo.UI
 
             return true;
         }
-
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
@@ -191,9 +184,7 @@ namespace Catalogo.UI
         }
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAltaArticulo altaArticulo = new frmAltaArticulo();
-            altaArticulo.ShowDialog();
-            cargar();
+
         }
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -240,6 +231,20 @@ namespace Catalogo.UI
         {
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
             lblFecha.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void agregarArticuloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo altaArticulo = new frmAltaArticulo();
+            altaArticulo.ShowDialog();
+            cargar();
+        }
+
+        private void agregarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAltaMarca altaMarca = new frmAltaMarca();
+            altaMarca.ShowDialog();
+            cargar();
         }
     }
 }
