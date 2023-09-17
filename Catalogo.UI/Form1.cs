@@ -212,7 +212,6 @@ namespace Catalogo.UI
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
             lblFecha.Text = DateTime.Now.ToLongDateString();
         }
-
         private void agregarArticuloToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAltaArticulo altaArticulo = new frmAltaArticulo();
@@ -252,7 +251,6 @@ namespace Catalogo.UI
             frmAltaCategoria altaCategoria = new frmAltaCategoria();
             altaCategoria.ShowDialog();
         }
-
         private void eliminarCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmBajaCategoria bajaCategoria = new frmBajaCategoria();
@@ -292,18 +290,18 @@ namespace Catalogo.UI
                 cargar();
             }
         }
-
         private void modificarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmModificarMarca modificarMarca = new frmModificarMarca();
             modificarMarca.ShowDialog();
+            cargar();
         }
         private void modificarCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmModificarCategoria modificarCategoria = new frmModificarCategoria();
             modificarCategoria.ShowDialog();
+            cargar();
         }
-
         private void btnImagen_Click(object sender, EventArgs e)
         {
             Articulo seleccionado;

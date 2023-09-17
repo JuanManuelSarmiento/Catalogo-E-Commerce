@@ -80,7 +80,8 @@
             this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.lblDescripcion);
             this.Name = "frmAltaCategoria";
-            this.Text = "frmAltaCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Agregar Categoría";
             this.Load += new System.EventHandler(this.frmAltaCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

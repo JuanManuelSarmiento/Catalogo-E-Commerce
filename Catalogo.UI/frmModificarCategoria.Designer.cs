@@ -102,7 +102,8 @@
             this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.lblDescripcion);
             this.Name = "frmModificarCategoria";
-            this.Text = "frmModificarCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Modificar Categoria";
             this.Load += new System.EventHandler(this.frmModificarCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

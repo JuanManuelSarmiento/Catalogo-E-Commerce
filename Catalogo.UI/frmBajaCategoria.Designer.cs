@@ -82,7 +82,8 @@
             this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.lblDescripcion);
             this.Name = "frmBajaCategoria";
-            this.Text = "frmBajaCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Eliminar Categoria";
             this.Load += new System.EventHandler(this.frmBajaCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

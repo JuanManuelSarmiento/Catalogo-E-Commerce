@@ -102,7 +102,8 @@
             this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.lblDescripcion);
             this.Name = "frmModificarMarca";
-            this.Text = "frmModificarMarca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Modificar Marca";
             this.Load += new System.EventHandler(this.frmModificarMarca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

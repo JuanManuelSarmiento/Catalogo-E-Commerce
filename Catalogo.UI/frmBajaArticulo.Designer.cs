@@ -82,7 +82,8 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.lblCodigo);
             this.Name = "frmBajaArticulo";
-            this.Text = "frmBajaArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Eliminar Articulo";
             this.Load += new System.EventHandler(this.frmBajaArticulo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -83,7 +83,7 @@
             this.Controls.Add(this.lblDescripcion);
             this.Name = "frmBajaMarca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmBajaMarca";
+            this.Text = "Eliminar Marca";
             this.Load += new System.EventHandler(this.frmBajaMarca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

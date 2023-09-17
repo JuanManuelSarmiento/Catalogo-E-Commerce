@@ -43,6 +43,7 @@ namespace Catalogo.UI
             this.pbxImagen.Location = new System.Drawing.Point(183, 12);
             this.pbxImagen.Name = "pbxImagen";
             this.pbxImagen.Size = new System.Drawing.Size(211, 248);
+            this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagen.TabIndex = 0;
             this.pbxImagen.TabStop = false;
             // 
@@ -93,6 +94,7 @@ namespace Catalogo.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(408, 270);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtImagen);
@@ -100,8 +102,10 @@ namespace Catalogo.UI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxImagen);
             this.Controls.Add(this.pbxImagen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmImagen";
-            this.Text = "frmImagen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Administrar Imagen";
             this.Load += new System.EventHandler(this.frmImagen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
             this.ResumeLayout(false);
