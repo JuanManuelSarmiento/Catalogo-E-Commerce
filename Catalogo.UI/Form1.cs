@@ -101,6 +101,11 @@ namespace Catalogo.UI
             }
             if (cboCampo.SelectedItem.ToString() == "Precio" )
             {
+                if(txtFiltroAvanzado.Text.Length>38)
+                {
+                    MessageBox.Show("Solo puede cargar hasta 38 digitos.");
+                    return true;
+                }
                 if(string.IsNullOrEmpty(txtFiltroAvanzado.Text)) 
                 {
                     MessageBox.Show("Debe cargar el filtro para numéricos.");
@@ -112,6 +117,11 @@ namespace Catalogo.UI
                     return true;
                 }
                 return false;
+            }
+            if(!(validarNumerosLetras(txtFiltroAvanzado.Text))) 
+            {
+                MessageBox.Show("Solo se permiten letras y números");
+                return true;
             }
 
             return false;
@@ -128,6 +138,16 @@ namespace Catalogo.UI
 
             return true;
         }
+
+        private bool validarNumerosLetras(string texto)
+        {
+            string patron = "^[a-zA-Z0-9]+$";
+            bool esValido = Regex.IsMatch(texto, patron);
+
+            return esValido;
+
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 

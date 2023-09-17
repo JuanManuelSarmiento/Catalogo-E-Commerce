@@ -128,6 +128,7 @@ namespace Catalogo.UI
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
+            this.lblCampo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblCampo.Location = new System.Drawing.Point(9, 377);
             this.lblCampo.Name = "lblCampo";
             this.lblCampo.Size = new System.Drawing.Size(40, 13);
@@ -137,6 +138,7 @@ namespace Catalogo.UI
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
+            this.lblCriterio.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblCriterio.Location = new System.Drawing.Point(182, 377);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(39, 13);
@@ -146,6 +148,8 @@ namespace Catalogo.UI
             // lblFiltroAvanzado
             // 
             this.lblFiltroAvanzado.AutoSize = true;
+            this.lblFiltroAvanzado.BackColor = System.Drawing.Color.Black;
+            this.lblFiltroAvanzado.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblFiltroAvanzado.Location = new System.Drawing.Point(354, 377);
             this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
             this.lblFiltroAvanzado.Size = new System.Drawing.Size(29, 13);
