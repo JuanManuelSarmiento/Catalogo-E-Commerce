@@ -73,7 +73,7 @@ namespace Catalogo.UI
             // 
             // dgvArticulos
             // 
-            this.dgvArticulos.BackgroundColor = System.Drawing.Color.LightCyan;
+            this.dgvArticulos.BackgroundColor = System.Drawing.Color.Black;
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -97,11 +97,13 @@ namespace Catalogo.UI
             // lblFiltro
             // 
             this.lblFiltro.AutoSize = true;
+            this.lblFiltro.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F);
+            this.lblFiltro.ForeColor = System.Drawing.Color.White;
             this.lblFiltro.Location = new System.Drawing.Point(9, 33);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(40, 13);
+            this.lblFiltro.Size = new System.Drawing.Size(41, 14);
             this.lblFiltro.TabIndex = 4;
-            this.lblFiltro.Text = "Buscar";
+            this.lblFiltro.Text = "Filtrar";
             // 
             // txtFiltro
             // 
@@ -113,7 +115,7 @@ namespace Catalogo.UI
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(495, 367);
+            this.btnBuscar.Location = new System.Drawing.Point(495, 374);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 6;
@@ -124,7 +126,7 @@ namespace Catalogo.UI
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(9, 370);
+            this.lblCampo.Location = new System.Drawing.Point(9, 377);
             this.lblCampo.Name = "lblCampo";
             this.lblCampo.Size = new System.Drawing.Size(40, 13);
             this.lblCampo.TabIndex = 7;
@@ -133,7 +135,7 @@ namespace Catalogo.UI
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(182, 370);
+            this.lblCriterio.Location = new System.Drawing.Point(182, 377);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(39, 13);
             this.lblCriterio.TabIndex = 8;
@@ -142,7 +144,7 @@ namespace Catalogo.UI
             // lblFiltroAvanzado
             // 
             this.lblFiltroAvanzado.AutoSize = true;
-            this.lblFiltroAvanzado.Location = new System.Drawing.Point(354, 370);
+            this.lblFiltroAvanzado.Location = new System.Drawing.Point(354, 377);
             this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
             this.lblFiltroAvanzado.Size = new System.Drawing.Size(29, 13);
             this.lblFiltroAvanzado.TabIndex = 9;
@@ -150,7 +152,7 @@ namespace Catalogo.UI
             // 
             // txtFiltroAvanzado
             // 
-            this.txtFiltroAvanzado.Location = new System.Drawing.Point(389, 367);
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(389, 374);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(100, 20);
             this.txtFiltroAvanzado.TabIndex = 12;
@@ -158,8 +160,9 @@ namespace Catalogo.UI
             // cboCampo
             // 
             this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCampo.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(55, 367);
+            this.cboCampo.Location = new System.Drawing.Point(55, 374);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(121, 21);
             this.cboCampo.TabIndex = 13;
@@ -169,14 +172,14 @@ namespace Catalogo.UI
             // 
             this.cboCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCriterio.FormattingEnabled = true;
-            this.cboCriterio.Location = new System.Drawing.Point(227, 367);
+            this.cboCriterio.Location = new System.Drawing.Point(227, 374);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(121, 21);
             this.cboCriterio.TabIndex = 14;
             // 
             // btnRestablecer
             // 
-            this.btnRestablecer.Location = new System.Drawing.Point(576, 367);
+            this.btnRestablecer.Location = new System.Drawing.Point(576, 374);
             this.btnRestablecer.Name = "btnRestablecer";
             this.btnRestablecer.Size = new System.Drawing.Size(77, 23);
             this.btnRestablecer.TabIndex = 15;
@@ -186,7 +189,8 @@ namespace Catalogo.UI
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.menuStrip1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.agregarToolStripMenuItem,
@@ -349,11 +353,12 @@ namespace Catalogo.UI
             // 
             // btnImagen
             // 
-            this.btnImagen.Location = new System.Drawing.Point(750, 367);
+            this.btnImagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnImagen.BackgroundImage")));
+            this.btnImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnImagen.Location = new System.Drawing.Point(795, 367);
             this.btnImagen.Name = "btnImagen";
-            this.btnImagen.Size = new System.Drawing.Size(104, 23);
+            this.btnImagen.Size = new System.Drawing.Size(40, 36);
             this.btnImagen.TabIndex = 19;
-            this.btnImagen.Text = "Cambiar imagen";
             this.btnImagen.UseVisualStyleBackColor = true;
             this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
             // 
@@ -361,7 +366,7 @@ namespace Catalogo.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(921, 422);
             this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.lblFecha);

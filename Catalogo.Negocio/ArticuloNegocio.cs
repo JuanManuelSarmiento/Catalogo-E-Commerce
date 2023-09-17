@@ -1,6 +1,7 @@
 ﻿using Catalogo.Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,8 +175,10 @@ namespace Catalogo.Negocio
                     else
                         aux.Categoria.Id = 1;
 
-                    articulos.Add(aux);
-
+                    if (!articulos.Any(a => a.Id == aux.Id))
+                    {
+                        articulos.Add(aux);
+                    }
                 }
 
                 return articulos.OrderByDescending(a => a.Id).ToList();
