@@ -66,6 +66,8 @@ namespace Catalogo.UI
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblFecha = new System.Windows.Forms.Label();
             this.btnImagen = new System.Windows.Forms.Button();
+            this.cbxImagen = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -87,9 +89,9 @@ namespace Catalogo.UI
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(682, 56);
+            this.pbxArticulo.Location = new System.Drawing.Point(682, 99);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(228, 301);
+            this.pbxArticulo.Size = new System.Drawing.Size(228, 258);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 1;
             this.pbxArticulo.TabStop = false;
@@ -215,27 +217,27 @@ namespace Catalogo.UI
             this.agregarMarcaToolStripMenuItem,
             this.agregarCategoríaToolStripMenuItem});
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.agregarToolStripMenuItem.Text = "Agregar";
             // 
             // agregarArticuloToolStripMenuItem
             // 
             this.agregarArticuloToolStripMenuItem.Name = "agregarArticuloToolStripMenuItem";
-            this.agregarArticuloToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.agregarArticuloToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.agregarArticuloToolStripMenuItem.Text = "Articulo";
             this.agregarArticuloToolStripMenuItem.Click += new System.EventHandler(this.agregarArticuloToolStripMenuItem_Click);
             // 
             // agregarMarcaToolStripMenuItem
             // 
             this.agregarMarcaToolStripMenuItem.Name = "agregarMarcaToolStripMenuItem";
-            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.agregarMarcaToolStripMenuItem.Text = "Marca";
             this.agregarMarcaToolStripMenuItem.Click += new System.EventHandler(this.agregarMarcaToolStripMenuItem_Click);
             // 
             // agregarCategoríaToolStripMenuItem
             // 
             this.agregarCategoríaToolStripMenuItem.Name = "agregarCategoríaToolStripMenuItem";
-            this.agregarCategoríaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.agregarCategoríaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.agregarCategoríaToolStripMenuItem.Text = "Categoría";
             this.agregarCategoríaToolStripMenuItem.Click += new System.EventHandler(this.agregarCategoríaToolStripMenuItem_Click);
             // 
@@ -246,27 +248,27 @@ namespace Catalogo.UI
             this.eliminarMarcaToolStripMenuItem,
             this.eliminarCategoriaToolStripMenuItem});
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             // 
             // eliminarArticuloToolStripMenuItem
             // 
             this.eliminarArticuloToolStripMenuItem.Name = "eliminarArticuloToolStripMenuItem";
-            this.eliminarArticuloToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.eliminarArticuloToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.eliminarArticuloToolStripMenuItem.Text = "Articulo";
             this.eliminarArticuloToolStripMenuItem.Click += new System.EventHandler(this.eliminarArticuloToolStripMenuItem_Click);
             // 
             // eliminarMarcaToolStripMenuItem
             // 
             this.eliminarMarcaToolStripMenuItem.Name = "eliminarMarcaToolStripMenuItem";
-            this.eliminarMarcaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.eliminarMarcaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.eliminarMarcaToolStripMenuItem.Text = "Marca";
             this.eliminarMarcaToolStripMenuItem.Click += new System.EventHandler(this.eliminarMarcaToolStripMenuItem_Click);
             // 
             // eliminarCategoriaToolStripMenuItem
             // 
             this.eliminarCategoriaToolStripMenuItem.Name = "eliminarCategoriaToolStripMenuItem";
-            this.eliminarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.eliminarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.eliminarCategoriaToolStripMenuItem.Text = "Categoria";
             this.eliminarCategoriaToolStripMenuItem.Click += new System.EventHandler(this.eliminarCategoriaToolStripMenuItem_Click);
             // 
@@ -277,34 +279,34 @@ namespace Catalogo.UI
             this.modificarMarcaToolStripMenuItem,
             this.modificarCategoriaToolStripMenuItem});
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
             this.modificarToolStripMenuItem.Text = "Modificar";
             // 
             // modificarArticuloToolStripMenuItem
             // 
             this.modificarArticuloToolStripMenuItem.Name = "modificarArticuloToolStripMenuItem";
-            this.modificarArticuloToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarArticuloToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.modificarArticuloToolStripMenuItem.Text = "Articulo";
             this.modificarArticuloToolStripMenuItem.Click += new System.EventHandler(this.modificarArticuloToolStripMenuItem_Click);
             // 
             // modificarMarcaToolStripMenuItem
             // 
             this.modificarMarcaToolStripMenuItem.Name = "modificarMarcaToolStripMenuItem";
-            this.modificarMarcaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarMarcaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.modificarMarcaToolStripMenuItem.Text = "Marca";
             this.modificarMarcaToolStripMenuItem.Click += new System.EventHandler(this.modificarMarcaToolStripMenuItem_Click);
             // 
             // modificarCategoriaToolStripMenuItem
             // 
             this.modificarCategoriaToolStripMenuItem.Name = "modificarCategoriaToolStripMenuItem";
-            this.modificarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.modificarCategoriaToolStripMenuItem.Text = "Categoria";
             this.modificarCategoriaToolStripMenuItem.Click += new System.EventHandler(this.modificarCategoriaToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(41, 20);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
             // 
@@ -362,12 +364,33 @@ namespace Catalogo.UI
             this.btnImagen.UseVisualStyleBackColor = true;
             this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
             // 
+            // cbxImagen
+            // 
+            this.cbxImagen.FormattingEnabled = true;
+            this.cbxImagen.Location = new System.Drawing.Point(743, 56);
+            this.cbxImagen.Name = "cbxImagen";
+            this.cbxImagen.Size = new System.Drawing.Size(121, 21);
+            this.cbxImagen.TabIndex = 20;
+            this.cbxImagen.SelectedIndexChanged += new System.EventHandler(this.cbxImagen_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(764, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Escoger imagen";
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(921, 422);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbxImagen);
             this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblHora);
@@ -438,6 +461,8 @@ namespace Catalogo.UI
         private System.Windows.Forms.ToolStripMenuItem modificarMarcaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarCategoriaToolStripMenuItem;
         private System.Windows.Forms.Button btnImagen;
+        private System.Windows.Forms.ComboBox cbxImagen;
+        private System.Windows.Forms.Label label1;
     }
 }
 

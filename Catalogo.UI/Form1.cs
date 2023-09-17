@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Catalogo.Dominio;
@@ -29,14 +30,25 @@ namespace Catalogo.UI
             cboCampo.Items.Add("Marca");
             cboCampo.Items.Add("Categoria");
             cboCampo.Items.Add("Precio");
+
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+
+            cbxImagen.DataSource = articuloNegocio.Listar();
         }
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            if(dgvArticulos.CurrentRow != null)
+
+            if (dgvArticulos.CurrentRow != null)
             {
-                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                CargarImagen(seleccionado.Imagen.ImagenUrl);
+
             }
+        }
+        private void cbxImagen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Articulo articulo = new Articulo();
+
+            Articulo seleccionado = (Articulo)cbxImagen.SelectedItem;
+            CargarImagen(seleccionado.Imagen.ImagenUrl);
         }
         private void CargarImagen(string Imagen)
         {
