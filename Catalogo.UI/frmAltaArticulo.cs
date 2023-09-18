@@ -28,16 +28,22 @@ namespace Catalogo.UI
             InitializeComponent();
             esEdicion = false;
             validaciones = new Validar();
+            cbxImagen.Visible = false;
         }
         public frmAltaArticulo(Articulo articulo)
         {
             InitializeComponent();
+            ImagenNegocio imagen = new ImagenNegocio();
             this.articulo = articulo;
             esEdicion = true;
             Text = "Modificar Artículo";
+            txtImagen.Visible = false;
+            btnAgregarImagen.Visible = false;
+            
         }
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
+            ImagenNegocio imagen = new ImagenNegocio();
             MarcaNegocio marca = new MarcaNegocio();
             CategoriaNegocio categoria = new CategoriaNegocio();
             try
@@ -51,11 +57,12 @@ namespace Catalogo.UI
                 
                 if (esEdicion)
                 {
+                    cbxImagen.DataSource = imagen.Listar(articulo);
+                    cbxImagen.ValueMember = "ImagenUrl";
                     txtCodigo.Text = articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
-                    txtImagen.Text = articulo.Imagen.ImagenUrl;
-                    CargarImagen(articulo.Imagen.ImagenUrl);
+                    CargarImagen(cbxImagen.SelectedValue.ToString());
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                     txtPrecio.Text = articulo.Precio.ToString();
@@ -130,8 +137,7 @@ namespace Catalogo.UI
                 if(esEdicion)
                 {
                     artNegocio.Update(articulo);
-                    articulo.Imagen.ImagenUrl = txtImagen.Text;
-                    artNegocio.UpdateImage(articulo);
+                    artNegocio.UpdateImage(articulo, cbxImagen.SelectedValue.ToString());
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
@@ -204,6 +210,13 @@ namespace Catalogo.UI
                 //guardo imagen
                 //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
             }
+        }
+
+        private void cbxImagen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbxImagen.SelectedItem.ToString();
+
+            CargarImagen(opcion);
         }
     }
 }

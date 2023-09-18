@@ -46,6 +46,7 @@
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
+            this.cbxImagen = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,11 +139,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 207);
+            this.label1.Location = new System.Drawing.Point(94, 208);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Link imagen:";
+            this.label1.Text = "Imagen:";
             // 
             // txtImagen
             // 
@@ -205,11 +206,21 @@
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
+            // cbxImagen
+            // 
+            this.cbxImagen.FormattingEnabled = true;
+            this.cbxImagen.Location = new System.Drawing.Point(142, 203);
+            this.cbxImagen.Name = "cbxImagen";
+            this.cbxImagen.Size = new System.Drawing.Size(121, 21);
+            this.cbxImagen.TabIndex = 18;
+            this.cbxImagen.SelectedIndexChanged += new System.EventHandler(this.cbxImagen_SelectedIndexChanged);
+            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 450);
+            this.Controls.Add(this.cbxImagen);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.cboCategoria);
@@ -258,5 +269,6 @@
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Button btnAgregarImagen;
+        private System.Windows.Forms.ComboBox cbxImagen;
     }
 }

@@ -66,8 +66,6 @@ namespace Catalogo.Negocio
                 datos.SetParametro("@idCategoria", newEntity.Categoria.Id);
                 datos.SetParametro("@precio", newEntity.Precio);
                 datos.SetParametro("@id", newEntity.Id);
-                
-
                 datos.EjecutarLectura();
             }
             catch (Exception ex)
@@ -78,29 +76,11 @@ namespace Catalogo.Negocio
             finally
             {
                 datos.CerrarConexion();
-            }
+            } 
         }
-        public void UpdateImage(Articulo art)
+        public void UpdateImage(Articulo art, string urlImagen)
         {
-            AccesoADatos datos = new AccesoADatos();
-            try
-            {
-                datos.SetConsulta("UPDATE IMAGENES SET ImagenUrl = @imagenUrl WHERE IdArticulo = @IdArticulo AND ID = @id");
-                datos.SetParametro("@imagenUrl", art.Imagen.ImagenUrl);
-                datos.SetParametro("@idArticulo", art.Id);
-                datos.SetParametro("@id", art.Imagen.Id);
-
-                datos.EjecutarLectura();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.CerrarConexion();
-            }
+            art.Imagen.ImagenUrl = urlImagen;
         }
         public List<Articulo> Listar()
         {

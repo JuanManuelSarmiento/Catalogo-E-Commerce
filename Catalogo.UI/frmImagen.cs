@@ -32,7 +32,7 @@ namespace Catalogo.UI
             ImagenNegocio imagenes = new ImagenNegocio();
             try
             {
-                cbxImagen.DataSource = imagenes.Listar(articulo.Id);
+                cbxImagen.DataSource = imagenes.Listar(articulo);
             }
             catch (Exception ex)
             {

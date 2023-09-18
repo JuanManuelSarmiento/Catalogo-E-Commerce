@@ -40,15 +40,16 @@ namespace Catalogo.UI
 
             if (dgvArticulos.CurrentRow != null)
             {
-
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                CargarImagen(seleccionado.Imagen.ImagenUrl);
             }
         }
         private void cbxImagen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
+            //Articulo articulo = new Articulo();
 
-            Articulo seleccionado = (Articulo)cbxImagen.SelectedItem;
-            CargarImagen(seleccionado.Imagen.ImagenUrl);
+            //Articulo seleccionado = (Articulo)cbxImagen.SelectedItem;
+            //CargarImagen(seleccionado.Imagen.ImagenUrl);
         }
         private void CargarImagen(string Imagen)
         {

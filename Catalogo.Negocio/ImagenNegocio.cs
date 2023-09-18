@@ -65,13 +65,14 @@ namespace Catalogo.Negocio
                 datos.CerrarConexion();
             }
         }
-        public List<Imagen> Listar(int idArticulo)
+        public List<Imagen> Listar(Articulo art)
         {
             datos = new AccesoADatos();
             try
             {
-                datos.SetConsulta("Select ImagenUrl from IMAGENES where IdArticulo = @idArticulo");
-                datos.SetParametro("@idArticulo", idArticulo);
+                datos.SetConsulta("SELECT ImagenUrl FROM IMAGENES WHERE IdArticulo = @idArticulo ORDER BY CASE WHEN ImagenUrl = '@urlActual' THEN 0 ELSE 1 END, ImagenUrl");
+                datos.SetParametro("@idArticulo", art.Id);
+                datos.SetParametro("@urlActual", art.Imagen.ImagenUrl);
                 datos.EjecutarLectura();
                 List<Imagen> imagenes = new List<Imagen>();
                 while (datos.Lector.Read())
