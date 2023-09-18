@@ -103,7 +103,7 @@ namespace Catalogo.UI
             {
                 if(txtFiltroAvanzado.Text.Length>38)
                 {
-                    MessageBox.Show("Solo puede cargar hasta 38 digitos.");
+                    MessageBox.Show("Solo puede cargar hasta 38 dígitos.");
                     return true;
                 }
                 if(string.IsNullOrEmpty(txtFiltroAvanzado.Text)) 

@@ -75,10 +75,44 @@ namespace Catalogo.UI
         {
             Close();
         }
+
+        private bool validarAlta()
+        {
+            if(txtCodigo.Text.Length > 50) 
+            {
+                MessageBox.Show("El código puede tener un maximo de 50 caractéres.");
+                return true;
+            }
+            if(txtNombre.Text.Length > 50) 
+            {
+                MessageBox.Show("El nombre puede tener un maximo de 50 caractéres.");
+                return true;
+            }
+            if(txtDescripcion.Text.Length > 150)
+            {
+                MessageBox.Show("La descripción puede tener un maximo de 150 caractéres.");
+                return true;
+            }
+            if(txtImagen.Text.Length > 1000)
+            {
+                MessageBox.Show("La ruta de la imagen puede tener un maximo de 1000 caractéres.");
+                return true;
+            }
+            if (txtPrecio.Text.Length > 38)
+            {
+                MessageBox.Show("El precio puede tener un máximo de 38 dígitos.");
+                return true;
+            }
+
+            return false;
+        }
+
         private void btnAlta_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
             ImagenNegocio imgNegocio = new ImagenNegocio();
+            if (validarAlta())
+                return;
             try
             {
                 
